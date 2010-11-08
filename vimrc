@@ -86,6 +86,7 @@ set expandtab
 
 " Always display the status line
 set laststatus=2
+set statusline+=%{rvm#statusline()}
 
 " \ is the leader character
 let mapleader = ","
