@@ -6,7 +6,7 @@ desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
   Dir['*'].each do |file|
-    next if %w[Rakefile README.rdoc LICENSE nerdtree vim-rails vim-cucumber].include? file
+    next if %w[Rakefile README.rdoc LICENSE].include? file
     
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
@@ -31,10 +31,8 @@ task :install do
       link_file(file)
     end
   end
-  puts "Updating nerdtree"
-  system("cd " << Dir.new(File.join(File.dirname(__FILE__), 'nerdtree')).path << " && rake update")
-  puts "Updating vim-rails"
-  system("cd " << Dir.new(File.join(File.dirname(__FILE__), 'vim-rails')).path << " && git pull && rake install")
+  puts "Updating vim config"
+  system("cd " << Dir.new(File.join(ENV['HOME'], '.vim')).path << " && git pull origin master && rake")
 end
 
 def replace_file(file)
