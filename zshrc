@@ -24,7 +24,7 @@ plugins=(rails gem git ruby)
 . ~/.zsh/completion
 
 # use .localrc for settings specific to one system
-[[ -f ~/.localrc ]] && .  ~/.localrc
+[[ -f ~/.localrc ]] && . ~/.localrc
 
 source $ZSH/oh-my-zsh.sh
 
