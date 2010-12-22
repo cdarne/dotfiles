@@ -4,3 +4,6 @@
 [submodule "vim"]
 	path = vim
 	url = git://github.com/carlhuda/janus.git
+[submodule "completion-ruby"]
+	path = completion-ruby
+	url = git://github.com/mernen/completion-ruby.git
