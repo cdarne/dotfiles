@@ -1,5 +1,6 @@
 source ~/.bash/aliases
 source ~/.bash/completions
+source ~/.bash/utilities
 source ~/.bash/paths
 source ~/.bash/config
 
