@@ -3,3 +3,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -r $HOME/.completion-ruby/completion-ruby-all ]] && . $HOME/.completion-ruby/completion-ruby-all
