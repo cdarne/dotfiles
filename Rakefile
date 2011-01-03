@@ -31,8 +31,6 @@ task :install do
       link_file(file)
     end
   end
-  puts "Updating vim config"
-  system("cd " << Dir.new(File.join(ENV['HOME'], '.vim')).path << " && git pull origin master && rake")
 end
 
 def replace_file(file)
