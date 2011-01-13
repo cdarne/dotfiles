@@ -9,5 +9,4 @@ if [ -f ~/.localrc ]; then
   source ~/.localrc
 fi
 
-[[ -r "$HOME/.completion-ruby/completion-ruby-all" ]] && . $HOME/.completion-ruby/completion-ruby-all
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
