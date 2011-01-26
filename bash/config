@@ -6,4 +6,4 @@ GREEN="\[\033[0;32m\]"
 YELLOW="\[\033[1;33m\]"
 RESET_COLOR="\[\033[0m\]"
 
-export PS1="\$(my_rvm_ruby_version) $BLUE:: $GREEN\w$YELLOW\$(my_git_branch) $BLUE» $RESET_COLOR"
+export PS1="\$(my_rvm_ruby_version) $BLUE:: $GREEN\w$YELLOW\$(my_git_branch) $BLUE>> $RESET_COLOR"
