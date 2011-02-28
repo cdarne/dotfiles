@@ -17,7 +17,7 @@ export ZSH_THEME="afowler"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails gem git ruby)
+plugins=(rails3 gem git ruby bundler)
 
 . ~/.zsh/config
 . ~/.zsh/aliases
