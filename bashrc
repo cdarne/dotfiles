@@ -11,3 +11,4 @@ fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 [[ -r $HOME/.completion-ruby/completion-ruby-all ]] && source $HOME/.completion-ruby/completion-ruby-all
+[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh"
