@@ -15,10 +15,3 @@ function my_git_branch {
   local branch=$(parse_git_branch)
   [ "$branch" != "" ] && echo " $branch"
 }
-function my_rvm_ruby_version {
-  local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
-  [ "$gemset" != "" ] && gemset="@$gemset"
-  local version=$(echo $MY_RUBY_HOME | awk -F'-' '{print $2}')
-  local full="$version$gemset"
-  [ "$full" != "" ] && echo "[$full]"
-}
