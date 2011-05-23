@@ -24,11 +24,13 @@ alias r='rails'
 alias a='autotest -rails'
 alias migrate='rake db:migrate db:test:clone'
 
-alias utmdb='psql --host monica.ldmobile.net --user utm utm'
-alias checkitdb='psql --host belinda.ldmobile.net --user checkit checkit'
-alias monica_php_err='ssh root@monica.ldmobile.net tail -f /var/log/apache2/php-error.log | ccze -m ansi -p php'
-alias belinda_php_err='ssh root@belinda.ldmobile.net tail -f /var/log/apache2/php-error.log | ccze -m ansi -p php'
-alias yuicompressor='java -jar ~/opt/yuicompressor-2.4.2.jar "$@"'
+#alias utmdb='psql --host monica.ldmobile.net --user utm utm'
+#alias checkitdb='psql --host belinda.ldmobile.net --user checkit checkit'
+#alias monica_php_err='ssh root@monica.ldmobile.net tail -f /var/log/apache2/php-error.log | ccze -m ansi -p php'
+#alias belinda_php_err='ssh root@belinda.ldmobile.net tail -f /var/log/apache2/php-error.log | ccze -m ansi -p php'
+#alias yuicompressor='java -jar ~/opt/yuicompressor-2.4.2.jar "$@"'
+alias grosleep='ssh cdarne@grosleep.mekensleep.com'
+alias ppd='ssh cdarne@192.168.13.72'
 
 # commands starting with % for pasting from web
 alias %=' '

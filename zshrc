@@ -17,7 +17,7 @@ export ZSH_THEME="afowler"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler debian gem git github npm rails3 ruby ssh-agent svn)
+plugins=(bundler debian gem git github npm rails3 ruby svn)
 
 . ~/.zsh/config
 . ~/.zsh/aliases
@@ -31,3 +31,4 @@ source $ZSH/oh-my-zsh.sh
 unsetopt auto_name_dirs
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 fpath=(~/.zsh/Completion $fpath)
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
