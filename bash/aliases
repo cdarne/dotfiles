@@ -21,3 +21,12 @@ alias belinda_php_err='ssh root@belinda.ldmobile.net tail -f /var/log/apache2/ph
 alias bertha_mt_err='ssh root@bertha.ldmobile.net tail -f /data/www/sendit.ldmobile.net/MO/logs/mt_error.log | ccze -m ansi'
 alias peanuts='ssh 192.168.1.231'
 alias yuicompressor='java -jar ~/opt/yuicompressor-2.4.2.jar "$@"'
+
+# wine
+function prefix {
+   export WINEPREFIX="$HOME/.local/share/wineprefixes/$1"
+}
+
+function goc {
+  cd $WINEPREFIX/drive_c
+}
