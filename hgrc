@@ -1,0 +1,6 @@
+[ui]
+username = Cedric Darne <cedric.darne@c4mprod.com>
+
+[extensions]
+color =
+hgext.graphlog =
