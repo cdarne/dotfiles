@@ -14,6 +14,15 @@ function railsapp {
 # misc
 alias reload='. ~/.bash_profile'
 
+# wine
+function prefix {
+   export WINEPREFIX="$HOME/.local/share/wineprefixes/$1"
+}
+
+function goc {
+  cd $WINEPREFIX/drive_c
+}
+
 #alias utmdb='psql --host monica.ldmobile.net --user utm utm'
 #alias checkitdb='psql --host belinda.ldmobile.net --user checkit checkit'
 #alias monica_php_err='ssh root@monica.ldmobile.net tail -f /var/log/apache2/php-error.log | ccze -m ansi -p php'
