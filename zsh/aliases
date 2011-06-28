@@ -31,6 +31,8 @@ alias migrate='rake db:migrate db:test:clone'
 #alias yuicompressor='java -jar ~/opt/yuicompressor-2.4.2.jar "$@"'
 alias grosleep='ssh cdarne@grosleep.mekensleep.com'
 alias ppd='ssh cdarne@192.168.13.72'
+alias server1='ssh cdarne@server1.c4mprod.com'
+alias server2='ssh cdarne@server2.c4mprod.com'
 alias server3='ssh cdarne@94.23.54.176'
 
 # commands starting with % for pasting from web
