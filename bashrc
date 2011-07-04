@@ -10,4 +10,3 @@ if [ -f ~/.localrc ]; then
 fi
 
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
-[[ -r $HOME/.completion-ruby/completion-ruby-all ]] && source $HOME/.completion-ruby/completion-ruby-all
