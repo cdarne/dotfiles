@@ -23,6 +23,18 @@ function goc {
   cd $WINEPREFIX/drive_c
 }
 
+# git
+alias gl='git pull'
+alias gp='git push'
+alias gd='git diff'
+alias gc='git commit'
+alias gca='git commit -a'
+alias gco='git checkout'
+alias gb='git branch'
+alias gs='git status'
+alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
+
 #alias utmdb='psql --host monica.ldmobile.net --user utm utm'
 #alias checkitdb='psql --host belinda.ldmobile.net --user checkit checkit'
 #alias monica_php_err='ssh root@monica.ldmobile.net tail -f /var/log/apache2/php-error.log | ccze -m ansi -p php'
@@ -33,3 +45,6 @@ function goc {
 #alias yuicompressor='java -jar ~/opt/yuicompressor-2.4.2.jar "$@"'
 alias grosleep='ssh cdarne@grosleep.mekensleep.com'
 alias ppd='ssh cdarne@192.168.13.72'
+alias server1='ssh cdarne@server1.c4mprod.com'
+alias server2='ssh cdarne@server2.c4mprod.com'
+alias server3='ssh cdarne@94.23.54.176'
