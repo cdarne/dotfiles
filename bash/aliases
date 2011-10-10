@@ -23,6 +23,9 @@ function goc {
   cd $WINEPREFIX/drive_c
 }
 
+# arch linux
+alias pacman='pacman-color'
+
 # git
 alias gl='git pull'
 alias gp='git push'
