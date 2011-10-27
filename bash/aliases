@@ -29,6 +29,9 @@ function optimize_pngs () {
   optipng -o7 *.png
 }
 
+# arch linux
+alias pacman='pacman-color'
+
 # git
 alias gl='git pull'
 alias gp='git push'
