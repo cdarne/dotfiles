@@ -3,7 +3,7 @@
 	url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim"]
 	path = vim
-	url = git@github.com:cdarne/janus.git
+	url = git://github.com/carlhuda/janus.git
 [submodule "completion-ruby"]
 	path = completion-ruby
 	url = git://github.com/mernen/completion-ruby.git
