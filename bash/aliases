@@ -1,10 +1,10 @@
 . ~/.zsh/aliases
 
 # changing directory to code project
-function c { cd ~/Code/$1; }
+function c () { cd ~/Code/$1; }
 
 # alternative to "rails" command to use templates
-function railsapp {
+function railsapp () {
   template=$1
   appname=$2
   shift 2
@@ -15,16 +15,19 @@ function railsapp {
 alias reload='. ~/.bash_profile'
 
 # wine
-function prefix {
-   export WINEPREFIX="$HOME/.local/share/wineprefixes/$1"
+function prefix () {
+  export WINEPREFIX="$HOME/.local/share/wineprefixes/$1"
 }
 
-function goc {
+function goc () {
   cd $WINEPREFIX/drive_c
 }
 
-# arch linux
-alias pacman='pacman-color'
+function optimize_pngs () {
+  pngnq -vf -s1 *.png
+  rename -f 's/-nq8.png$/.png/' *.png
+  optipng -o7 *.png
+}
 
 # git
 alias gl='git pull'
@@ -51,3 +54,4 @@ alias ppd='ssh cdarne@192.168.13.72'
 alias server1='ssh cdarne@server1.c4mprod.com'
 alias server2='ssh cdarne@server2.c4mprod.com'
 alias server3='ssh cdarne@94.23.54.176'
+alias server4='ssh cdarne@server4.c4mprod.com'
