@@ -6,6 +6,8 @@ fi
 
 export EDITOR='vim'
 export PATH="$HOME/bin:$HOME/local/bin:$PATH"
+export NACL_SDK_ROOT="$HOME/Applications/Chrome/nacl_sdk"
+export FMOD_SDK_ROOT="$HOME/Applications/Chrome/fmodapi43806nacl"
 
 fpath=(~/.zsh/functions $fpath)
 

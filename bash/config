@@ -1,4 +1,6 @@
 export EDITOR="vim"
+export NACL_SDK_ROOT="$HOME/Applications/Chrome/nacl_sdk"
+export FMOD_SDK_ROOT="$HOME/Applications/Chrome/fmodapi43806nacl"
 
 BOLD_WHITE="\[\033[1;37m\]"
 BLUE="\[\033[0;34m\]"
