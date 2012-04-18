@@ -1,0 +1,3 @@
+pngnq -vf -s1 *.png 
+rename -f 's/-nq8.png$/.png/' *.png 
+optipng -o7 *.png
