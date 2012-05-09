@@ -1,2 +1,2 @@
-export PATH="~/bin:~/Applications/android-sdk/tools:~/Applications/android-sdk/platform-tools:$PATH"
+export PATH="~/bin:~/Applications/android-sdk/tools:~/Applications/android-sdk/platform-tools:~/Applications/flex-sdk/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
