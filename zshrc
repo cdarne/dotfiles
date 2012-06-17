@@ -17,19 +17,20 @@ export ZSH_THEME="afowler"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(bundler compleat gem git github heroku node npm rails3 rake ruby rvm svn yum)
+plugins=(brew gem git github heroku node npm rails3 rake ruby rvm svn)
 
-. ~/.zsh/config
-. ~/.zsh/aliases
-. ~/.zsh/completion
+#. ~/.zsh/config
+#. ~/.zsh/completion
 
 # use .localrc for settings specific to one system
 [[ -f ~/.localrc ]] && . ~/.localrc
 
 source $ZSH/oh-my-zsh.sh
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM
 unsetopt correct_all
 unsetopt auto_name_dirs
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-fpath=(~/.zsh/Completion $fpath)
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+
+. ~/.zsh/aliases
+
+export PATH="$PATH:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools"

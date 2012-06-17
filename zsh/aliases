@@ -21,8 +21,7 @@ alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG
 
 # rails
 alias r='rails'
-alias a='autotest -rails'
-alias migrate='rake db:migrate db:test:clone'
+alias migrate='rake db:migrate db:test:prepare'
 
 #alias utmdb='psql --host monica.ldmobile.net --user utm utm'
 #alias checkitdb='psql --host belinda.ldmobile.net --user checkit checkit'
