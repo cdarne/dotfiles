@@ -1,0 +1,1 @@
+export PATH="$PATH:$HOME/Applications/android-sdk/tools:$HOME/Applications/android-sdk/platform-tools:$HOME/Applications/flex-sdk/bin"

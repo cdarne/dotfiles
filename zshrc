@@ -17,7 +17,7 @@ export ZSH_THEME="afowler"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew gem git github heroku node npm rails3 rake ruby rvm svn)
+plugins=(brew gem git github heroku node npm rails3 rake ruby rvm svn yum)
 
 #. ~/.zsh/config
 #. ~/.zsh/completion
@@ -33,4 +33,9 @@ unsetopt auto_name_dirs
 
 . ~/.zsh/aliases
 
-export PATH="$PATH:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools"
+if [[ `uname` == *Linux* ]]
+then
+  . ~/.zsh/config_linux
+else
+  . ~/.zsh/config_darwin
+fi
