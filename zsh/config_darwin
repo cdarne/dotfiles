@@ -1,3 +1,0 @@
-export PATH="$HOME/bin:$HOME/Applications/android-sdk/tools:$HOME/Applications/android-sdk/platform-tools:$HOME/Applications/flex-sdk/bin:$PATH"
-
-plugins=(gem git github heroku node npm rails3 rake ruby rvm svn yum)

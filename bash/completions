@@ -1,3 +1,2 @@
-source ~/.bash/completion_scripts/git_completion
 [[ -r $HOME/.rvm/scripts/completion ]] && . $HOME/.rvm/scripts/completion
 [[ -r $HOME/.completion-ruby/completion-ruby-all ]] && . $HOME/.completion-ruby/completion-ruby-all

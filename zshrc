@@ -32,10 +32,4 @@ unsetopt correct_all
 unsetopt auto_name_dirs
 
 . ~/.zsh/aliases
-
-if [[ `uname` == *Linux* ]]
-then
-  . ~/.zsh/config_linux
-else
-  . ~/.zsh/config_darwin
-fi
+. ~/.zsh/paths
