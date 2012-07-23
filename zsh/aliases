@@ -34,5 +34,7 @@ alias server1='ssh cdarne@server1.c4mprod.com'
 alias server2='ssh cdarne@server2.c4mprod.com'
 alias server3='ssh cdarne@94.23.54.176'
 
+alias bark='play -q /usr/share/sounds/gnome/default/alerts/bark.ogg'
+
 # commands starting with % for pasting from web
 alias %=' '
