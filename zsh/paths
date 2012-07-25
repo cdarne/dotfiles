@@ -2,5 +2,5 @@ if [[ `uname` == *Linux* ]]
 then
   export PATH="$PATH:$HOME/Applications/android-sdk/tools:$HOME/Applications/android-sdk/platform-tools:$HOME/Applications/flex-sdk/bin"
 else
-  export PATH="$PATH:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools"
+  export PATH="/usr/local/bin:$PATH:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools"
 fi
