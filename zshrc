@@ -31,6 +31,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 unsetopt auto_name_dirs
 
+. ~/.zsh/config
 . ~/.zsh/aliases
 . ~/.zsh/paths
 

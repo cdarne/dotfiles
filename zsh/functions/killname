@@ -1,0 +1,2 @@
+# kill all the processes containg the name
+kill `ps -ef | grep "$1" | grep -v grep | awk '{print $2}'`
