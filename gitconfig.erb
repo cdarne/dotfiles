@@ -2,10 +2,7 @@
 	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
 	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
+	ui = true
 [core]
 	excludesfile = <%= ENV['HOME'] %>/.gitignore
 	editor = vim
@@ -17,3 +14,5 @@
 	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
 [credential]
 	helper = cache
+[push]
+	default = matching
