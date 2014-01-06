@@ -17,7 +17,7 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew gem git github go heroku node npm osx postgresql rails3 rake ruby rvm svn yum)
+plugins=(bundler gem git github go heroku node npm postgres rails rake ruby rvm ssh-agent sublime systemd yum zeus)
 
 #. ~/.zsh/config
 #. ~/.zsh/completion
