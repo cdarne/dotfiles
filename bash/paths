@@ -1,8 +1,0 @@
-if [[ `uname` == *Linux* ]]
-then
-  export PATH="$PATH:~/Applications/android-sdk/tools:~/Applications/android-sdk/platform-tools:~/Applications/flex-sdk/bin"
-  export NACL_SDK_ROOT="$HOME/Applications/Chrome/nacl_sdk"
-  export FMOD_SDK_ROOT="$HOME/Applications/Chrome/fmodapi43806nacl"
-else
-  export PATH="$PATH:/Applications/android-sdk-macosx/tools:/Applications/android-sdk-macosx/platform-tools"
-fi
