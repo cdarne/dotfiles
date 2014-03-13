@@ -36,10 +36,18 @@ alias server3='ssh cdarne@94.23.54.176'
 alias server5='ssh cdarne@91.121.173.37'
 alias tekken_staging='ssh -t cedric@54.229.211.164 screen -Rxl'
 alias tekken_production='ssh -t cedric@54.229.214.46 screen -Rxl'
-alias bastion_beta='ssh -t c4m@54.229.186.246 -i ~/.ssh/c4m-bastion screen -Rxl'
-alias bastion_prod='ssh -t c4m@54.194.4.240 -i ~/.ssh/c4m-bastion screen -Rxl'
+alias bastion_beta='ssh -t c4m@54.229.186.246 -i ~/.ssh/c4m-bastion byobu'
+alias bastion_prod='ssh -t c4m@54.194.248.248 -i ~/.ssh/c4m-bastion byobu'
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
-alias srs='sudo service postgresql start; sudo service memcached start; sudo service redis start'
+
+
+alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias redis_start='redis-server /usr/local/etc/redis.conf'
+alias redis_stop='redis-cli -p 6379 shutdown'
+alias memcached_start='memcached -d'
+alias memcached_stop='killall memcached'
+alias srs='pg_start; redis_start; memcached_start'
 
 # commands starting with % for pasting from web
 alias %=' '
