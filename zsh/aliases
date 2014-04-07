@@ -34,10 +34,10 @@ alias server1='ssh cdarne@server1.c4mprod.com'
 alias server2='ssh cdarne@server2.c4mprod.com'
 alias server3='ssh cdarne@94.23.54.176'
 alias server5='ssh cdarne@91.121.173.37'
-alias tekken_staging='ssh -t cedric@54.229.211.164 screen -Rxl'
-alias tekken_production='ssh -t cedric@54.229.214.46 screen -Rxl'
-alias bastion_beta='ssh -t c4m@54.229.186.246 -i ~/.ssh/c4m-bastion byobu'
+alias bastion_alpha='ssh -t cdarne@54.229.211.164 byobu'
+alias bastion_beta='ssh -t cdarne@54.229.186.246 byobu'
 alias bastion_prod='ssh -t c4m@54.194.248.248 -i ~/.ssh/c4m-bastion byobu'
+alias tekken_production='ssh -t cedric@54.229.214.46 screen -Rxl'
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
 
 
