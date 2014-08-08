@@ -37,6 +37,10 @@ set background=dark
 
 if has('gui_running')
   set guifont=Source\ Code\ Pro:h12
+  if has("autocmd")
+    " Automatically resize splits when resizing MacVim window
+    autocmd VimResized * wincmd =
+  endif
 endif
 
 " Whitespace
@@ -71,6 +75,9 @@ set numberwidth=5
 "Always show current position
 set ruler
 
+" Turn on syntax highlighting allowing local overrides
+syntax enable
+
 " Searching
 set hlsearch    " highlight matches
 set incsearch   " incremental searching
@@ -85,7 +92,17 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+""
+"" File types
+""
 
+if has("autocmd")
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  au FileType make setlocal noexpandtab
+
+  " Set the Ruby filetype for a number of common Ruby files without .rb
+  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake,*.rabl} set ft=ruby
+end
 
 ""
 "" Mappings
@@ -94,12 +111,8 @@ set ffs=unix,dos,mac
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+map <Down> gj
+map <Up> gk
 
 " Easier window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -107,7 +120,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Adjust viewports to the same size
+map <Leader>= <C-w>=
+
 " format the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
 
 map <Leader>n :NERDTreeToggle<CR>
+
