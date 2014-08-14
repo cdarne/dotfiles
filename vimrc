@@ -37,6 +37,10 @@ set background=dark
 
 if has('gui_running')
   set guifont=Source\ Code\ Pro:h12
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
+
   if has("autocmd")
     " Automatically resize splits when resizing MacVim window
     autocmd VimResized * wincmd =
@@ -66,7 +70,7 @@ set nowritebackup
 set noswapfile
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+set list listchars=tab:»»,trail:·
 
 " Numbers
 set number
@@ -99,9 +103,14 @@ set ffs=unix,dos,mac
 if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make setlocal noexpandtab
+  au FileType go setlocal noexpandtab nolist
 
   " Set the Ruby filetype for a number of common Ruby files without .rb
   au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake,*.rabl} set ft=ruby
+
+  " Auto save files when losing focus
+  "au BufLeave,FocusLost * silent! wall " ingoring warnings
+  au BufLeave,FocusLost * wall
 end
 
 ""
