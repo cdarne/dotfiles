@@ -24,6 +24,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
 Plugin 'skalnik/vim-vroom'
+Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
@@ -36,8 +37,8 @@ colorscheme desert
 set background=dark
 
 if has('gui_running')
-  set guifont=Source\ Code\ Pro:h12
-  set guioptions-=T  "remove toolbar
+  set guifont=Source\ Code\ Pro:h11
+  "set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
 
@@ -70,7 +71,7 @@ set nowritebackup
 set noswapfile
 
 " Display extra whitespace
-set list listchars=tab:»»,trail:·
+set list listchars=tab:¬\ ,trail:·
 
 " Numbers
 set number
@@ -137,3 +138,22 @@ nnoremap <leader>fef :normal! gg=G``<CR>
 
 map <Leader>n :NERDTreeToggle<CR>
 
+""
+"" Plugins config
+""
+
+" vim-go mappings
+au FileType go nmap <Leader>gd <Plug>(go-doc-tab)
+au FileType go nmap <Leader>gg <Plug>(go-def-tab)
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gc <Plug>(go-coverage)
+au FileType go nmap <leader>gi :GoImports<CR>
+
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+" Set minimum syntax keyword length
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
