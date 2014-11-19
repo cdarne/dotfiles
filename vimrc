@@ -9,22 +9,25 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-sensible' " Defaults for vim
+Plugin 'scrooloose/nerdtree' " Tree files view
+Plugin 'scrooloose/syntastic' " Syntax checker
+Plugin 'Shougo/neocomplete.vim' " Autocomplete
+Plugin 'kien/ctrlp.vim' " Quick open files
 
-Plugin 'tpope/vim-bundler'
+" git
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-projectionist'
+
+" Ruby
+Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-vinegar'
-
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'skalnik/vim-vroom' " Test runner
+
 Plugin 'fatih/vim-go'
-Plugin 'skalnik/vim-vroom'
-Plugin 'Shougo/neocomplete.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
@@ -157,3 +160,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+
+" ctrlp
+let g:ctrlp_working_path_mode = ''
