@@ -145,7 +145,8 @@ map <Leader>n :NERDTreeToggle<CR>
 "" Plugins config
 ""
 
-" vim-go mappings
+" vim-go
+"
 au FileType go nmap <Leader>gd <Plug>(go-doc-tab)
 au FileType go nmap <Leader>gg <Plug>(go-def-tab)
 au FileType go nmap <leader>gr <Plug>(go-run)
@@ -153,8 +154,11 @@ au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gc <Plug>(go-coverage)
 au FileType go nmap <leader>gi :GoImports<CR>
+let g:go_fmt_command = "goimports"
+
 
 " neocomplete
+"
 let g:neocomplete#enable_at_startup = 1
 " Set minimum syntax keyword length
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -163,4 +167,5 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 " ctrlp
+"
 let g:ctrlp_working_path_mode = ''
