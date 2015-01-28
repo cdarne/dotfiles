@@ -45,7 +45,12 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler gem git github go heroku node npm osx postgres rails rake ruby sublime sudo tmux zeus)
+if [[ `uname` == *Linux* ]]
+then
+  plugins=(bundler gem git github go heroku node npm postgres rails rake ruby sublime sudo tmux vagrant zeus)
+else
+  plugins=(brew bundler gem git github go heroku node npm osx postgres rails rake ruby sublime sudo tmux vagrant zeus)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
