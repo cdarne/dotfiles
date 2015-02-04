@@ -107,6 +107,7 @@ if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make setlocal noexpandtab
   au FileType go setlocal noexpandtab nolist
+  au FileType php setlocal ts=4 sts=4 sw=4
 
   " Set the Ruby filetype for a number of common Ruby files without .rb
   au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake,*.rabl} set ft=ruby
@@ -168,3 +169,4 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " ctrlp
 "
 let g:ctrlp_working_path_mode = ''
+nnoremap <leader>. :CtrlPTag<cr>
