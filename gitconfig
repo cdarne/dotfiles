@@ -1,15 +1,16 @@
 [user]
-	name = Cédric Darné
+	name = Cedric Darne
 	email = cedric.darne@gmail.com
 [color]
 	ui = auto
 [core]
 	excludesfile = ~/.gitignore
 	editor = vim
+	autocrlf = input
 [apply]
 	whitespace = nowarn
 [credential]
-	helper = cache
+	helper = cache --timeout 3600
 [alias]
 	pr = merge --no-commit --no-ff
 [push]
