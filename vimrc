@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree' " Tree files view
 Plugin 'scrooloose/syntastic' " Syntax checker
 Plugin 'Shougo/neocomplete.vim' " Autocomplete
 Plugin 'kien/ctrlp.vim' " Quick open files
+Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
 
 " git
 Plugin 'tpope/vim-fugitive'
