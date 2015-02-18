@@ -57,3 +57,4 @@ source $ZSH/oh-my-zsh.sh
 
 . ~/.zsh/golang
 . ~/.zsh/ruby
+. ~/.zsh/android
