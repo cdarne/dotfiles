@@ -1,6 +1,9 @@
 set nocompatible
 filetype off
 
+colorscheme delek
+"set background=dark
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -20,28 +23,24 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
 " Ruby
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'skalnik/vim-vroom' " Test runner
+"Plugin 'tpope/vim-bundler'
+"Plugin 'tpope/vim-rails'
+"Plugin 'tpope/vim-rake'
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'skalnik/vim-vroom' " Test runner
 
 Plugin 'fatih/vim-go'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
 filetype plugin indent on " required
 
 " Leader
-let mapleader = "ù"
-
-colorscheme desert
-set background=dark
+" let mapleader = "ù"
 
 if has('gui_running')
-  set guifont=Source\ Code\ Pro:h11
-  "set guioptions-=T  "remove toolbar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=m  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
 
