@@ -31,7 +31,7 @@ alias tekken_production='ssh -t cedric@54.229.214.46 screen -Rxl'
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
 alias find_broken_links='find -L . -type l -ls'
 
-alias login='ssh-keygen -f "/home/cdarne/.ssh/known_hosts" -R login.ifuzioncorp.com && ssh -t login.ifuzioncorp.com screen -dRR'
+alias login='ssh -t login.ifuzioncorp.com screen -dRR'
 
 alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'

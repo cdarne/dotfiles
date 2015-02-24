@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-colorscheme delek
+colorscheme desert
 "set background=dark
 
 " set the runtime path to include Vundle and initialize
@@ -15,9 +15,14 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-sensible' " Defaults for vim
 Plugin 'scrooloose/nerdtree' " Tree files view
 Plugin 'scrooloose/syntastic' " Syntax checker
-Plugin 'Shougo/neocomplete.vim' " Autocomplete
 Plugin 'kien/ctrlp.vim' " Quick open files
 Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
+
+" Auto-complete (needs lua support in vim)
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+
 
 " git
 Plugin 'tpope/vim-fugitive'
@@ -148,23 +153,68 @@ map <Leader>n :NERDTreeToggle<CR>
 
 " vim-go
 "
+au FileType go nmap <Leader>gs <Plug>(go-implements)
+au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc-tab)
 au FileType go nmap <Leader>gg <Plug>(go-def-tab)
 au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gb <Plug>(go-build)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gc <Plug>(go-coverage)
-au FileType go nmap <leader>gi :GoImports<CR>
+au FileType go nmap <leader>gmv <Plug>(go-rename)
+au FileType go nmap <leader>gimp :GoImports<CR>
 let g:go_fmt_command = "goimports"
 
 
 " neocomplete
 "
+" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+" Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  "return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" neosnippet
+"
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 
 
 " ctrlp
