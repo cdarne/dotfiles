@@ -32,7 +32,7 @@ Plugin 'tpope/vim-git'
 "Plugin 'tpope/vim-bundler'
 "Plugin 'tpope/vim-rails'
 "Plugin 'tpope/vim-rake'
-"Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 "Plugin 'skalnik/vim-vroom' " Test runner
 
 Plugin 'fatih/vim-go'
@@ -41,8 +41,9 @@ Plugin 'fatih/vim-go'
 call vundle#end() " required
 filetype plugin indent on " required
 
-" Leader
-" let mapleader = "ù"
+if filereadable(expand("~/.vimrc.before"))
+  source ~/.vimrc.before
+endif
 
 if has('gui_running')
   set guioptions-=T  "remove toolbar
@@ -221,3 +222,4 @@ endif
 "
 let g:ctrlp_working_path_mode = ''
 nnoremap <leader>. :CtrlPTag<cr>
+
