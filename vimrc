@@ -1,8 +1,7 @@
 set nocompatible
 filetype off
 
-colorscheme desert
-"set background=dark
+" Vundle config
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,7 +22,6 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
 
-
 " git
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
@@ -37,6 +35,9 @@ Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'fatih/vim-go'
 
+" Color themes
+Plugin 'morhetz/gruvbox'
+
 " All of your Plugins must be added before the following line
 call vundle#end() " required
 filetype plugin indent on " required
@@ -45,7 +46,19 @@ if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
-if has('gui_running')
+" End of Vundle config
+
+" Theme/color schemes config
+
+" Turn on syntax highlighting allowing local overrides
+syntax enable
+
+set background=dark
+let g:gruvbox_contrast_dark='hard'
+set t_Co=256
+colorscheme gruvbox
+
+if has("gui_running")
   set guioptions-=T  "remove toolbar
   set guioptions-=m  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -88,9 +101,6 @@ set numberwidth=5
 
 "Always show current position
 set ruler
-
-" Turn on syntax highlighting allowing local overrides
-syntax enable
 
 " Searching
 set hlsearch    " highlight matches
@@ -165,7 +175,6 @@ au FileType go nmap <leader>gc <Plug>(go-coverage)
 au FileType go nmap <leader>gmv <Plug>(go-rename)
 au FileType go nmap <leader>gimp :GoImports<CR>
 let g:go_fmt_command = "goimports"
-
 
 " neocomplete
 "
