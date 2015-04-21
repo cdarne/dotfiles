@@ -31,7 +31,7 @@ alias tekken_production='ssh -t cedric@54.229.214.46 screen -Rxl'
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
 alias find_broken_links='find -L . -type l -ls'
 
-alias login='ssh -t login.ifuzioncorp.com screen -dRR'
+alias gn='ssh -A -t login.ifuzioncorp.com screen -dRR'
 
 alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
@@ -40,6 +40,7 @@ alias redis_stop='redis-cli -p 6379 shutdown'
 alias memcached_start='memcached -d'
 alias memcached_stop='killall memcached'
 alias srs='pg_start; redis_start; memcached_start'
+alias tags='ctags-exuberant --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
 
 # commands starting with % for pasting from web
 alias %=' '

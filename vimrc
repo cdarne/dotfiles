@@ -144,6 +144,12 @@ map k gk
 map <Down> gj
 map <Up> gk
 
+" Quickfix easy navigation
+nnoremap <A-j> :cn<CR>
+nnoremap <A-k> :cp<CR>
+nnoremap <A-J> :cla<CR>
+nnoremap <A-K> :cr<CR>
+
 " Easier window navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
