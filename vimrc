@@ -17,6 +17,11 @@ Plugin 'scrooloose/syntastic' " Syntax checker
 Plugin 'kien/ctrlp.vim' " Quick open files
 Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
 
+" Tags
+Plugin 'majutsushi/tagbar' "class outline viewer
+"Plugin 'xolox/vim-misc' " Dependency for vim-easytags
+"Plugin 'xolox/vim-easytags' "Automated tag file generation and syntax highlighting
+
 " Auto-complete (needs lua support in vim)
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet.vim'
@@ -163,6 +168,7 @@ map <Leader>= <C-w>=
 nnoremap <leader>fef :normal! gg=G``<CR>
 
 map <Leader>n :NERDTreeToggle<CR>
+map <Leader>t :TagbarToggle<CR>
 
 ""
 "" Plugins config
@@ -181,6 +187,10 @@ au FileType go nmap <leader>gc <Plug>(go-coverage)
 au FileType go nmap <leader>gmv <Plug>(go-rename)
 au FileType go nmap <leader>gimp :GoImports<CR>
 let g:go_fmt_command = "goimports"
+
+au BufWritePost,FileWritePost *.go execute 'GoLint'
+
+
 
 " neocomplete
 "

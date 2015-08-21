@@ -41,6 +41,7 @@ alias memcached_start='memcached -d'
 alias memcached_stop='killall memcached'
 alias srs='pg_start; redis_start; memcached_start'
 alias tags='ctags-exuberant --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
+alias tagse='ctags-exuberant -e --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
 
 # commands starting with % for pasting from web
 alias %=' '
