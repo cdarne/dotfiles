@@ -6,14 +6,6 @@
 
 ;;; Code:
 
-(require 'package) ;; You might already have this line
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -28,7 +20,32 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+(defconst *is-a-mac* (eq system-type 'darwin))
+
+(require 'init-elpa)
+(require 'init-osx)
+
+;; Backup files in /temp please
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; increase font size for better readability
+(set-face-attribute 'default nil :height 140)
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs
+   '("PATH")))
+
+;; No need for ~ files when editing
+(setq create-lockfiles nil)
+
+;; Tweak to make display more responsive
+(setq redisplay-dont-pause t)
 
 (ido-mode)
 ;;(ido-everywhere t)
