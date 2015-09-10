@@ -86,8 +86,6 @@
 (global-set-key (kbd "<C-tab>") 'other-window)
 
 ;; Binds M-arrow keys to move window
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
 (windmove-default-keybindings 'meta)
 
 (provide 'init)
