@@ -81,3 +81,15 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
+
+;; Window navigation
+(global-set-key (kbd "<C-tab>") 'other-window)
+
+;; Binds M-arrow keys to move window
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+(windmove-default-keybindings 'meta)
+
+(provide 'init)
+;;; init.el ends here
+
