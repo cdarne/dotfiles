@@ -54,6 +54,8 @@
 ;;(ido-everywhere t)
 ;;(setq ido-enable-flex-matching t)
 
+(sml/setup)
+
 ;; Go config
 (require 'go-mode-autoloads)
 (setq gofmt-command "goimports")
@@ -85,4 +87,11 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 
-(sml/setup)
+;; Window navigation
+(global-set-key (kbd "<C-tab>") 'other-window)
+
+;; Binds M-arrow keys to move window
+(windmove-default-keybindings 'meta)
+
+(provide 'init)
+;;; init.el ends here
