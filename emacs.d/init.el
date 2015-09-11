@@ -37,7 +37,7 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
+(set-face-attribute 'default nil :height 120)
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
