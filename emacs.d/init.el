@@ -93,5 +93,9 @@
 ;; Binds M-arrow keys to move window
 (windmove-default-keybindings 'meta)
 
+;; Get some vim awesomeness
+(global-set-key (kbd "C-*") 'evil-search-symbol-forward)
+(global-set-key (kbd "C-#") 'evil-search-symbol-backward)
+
 (provide 'init)
 ;;; init.el ends here
