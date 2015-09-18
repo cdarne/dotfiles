@@ -97,5 +97,9 @@
 (global-set-key (kbd "C-*") 'evil-search-symbol-forward)
 (global-set-key (kbd "C-#") 'evil-search-symbol-backward)
 
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(global-set-key (kbd "C-x t") 'neotree-toggle)
+
 (provide 'init)
 ;;; init.el ends here
