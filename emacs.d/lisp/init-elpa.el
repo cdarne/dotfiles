@@ -25,22 +25,25 @@
 
 (defvar custom-packages
   '(auto-complete
+    ac-slime
     erlang
     evil
     flycheck
-    geiser
     go-mode
+    helm
     magit
     multi-term
     neotree
     org
     paredit
+    slime
     smart-mode-line
+    smex
     web-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun every (predicate-function list)
-  "Check if every element of the LIST satisfies the PREDICATE-FUNCTION."
+  "Check if PREDICATE-FUNCTION is t for every element of the LIST."
   (if (not list)
       t
     (and (funcall predicate-function (car list)) (every predicate-function (cdr list)))))

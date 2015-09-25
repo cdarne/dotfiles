@@ -50,10 +50,25 @@
 ;; Tweak to make display more responsive
 (setq redisplay-dont-pause t)
 
-(ido-mode)
+;; Helm
+(require 'helm-config)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+(define-key helm-command-map (kbd "o") 'helm-occur)
+(define-key helm-command-map (kbd "g") 'helm-do-grep)
+
+;; Ido
+(ido-mode +1)
 ;;(ido-everywhere t)
 ;;(setq ido-enable-flex-matching t)
 
+;; smex
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; Smart mode line
 (sml/setup)
 
 ;; Go config
@@ -64,10 +79,14 @@
                           (local-set-key (kbd "M-.") #'godef-jump)))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; auto-completion
 (require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+(eval-after-load "auto-complete"
+   '(add-to-list 'ac-modes 'slime-repl-mode))
 
 ;; Tab/indentation config
 (setq-default tab-width 4
@@ -100,6 +119,13 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key (kbd "C-x t") 'neotree-toggle)
+
+(require 'smooth-scrolling)
+
+;; lisp / slime config
+(setq inferior-lisp-program "/home/cdarne/sbcl/bin/sbcl")
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
 (provide 'init)
 ;;; init.el ends here

@@ -4,46 +4,28 @@ alias ..='cd ..'
 # ls
 alias ls="ls -F"
 alias l="ls -lAh"
-alias ll="ls -l"
+alias ll="ls -lh"
 alias la='ls -A'
 
 # git
-alias gl='git pull'
-alias gp='git push'
-alias gd='git diff'
-alias gc='git commit'
-alias gca='git commit -a'
-alias gco='git checkout'
-alias gb='git branch'
-alias gs='git status'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
 
 # Emacs
+alias ed='emacs --daemon'
+alias ek='emacsclient --eval "(kill-emacs)"'
 alias e='emacsclient -t'
 alias ec='emacsclient -c'
 
-# rails
-alias r='rails'
-alias migrate='bundle exec rake db:migrate db:test:prepare'
-
-alias server5='ssh cdarne@91.121.173.37'
-alias bastion_alpha='ssh -t cdarne@54.229.211.164 byobu'
-alias bastion_beta='ssh -t cdarne@54.229.186.246 byobu'
-alias bastion_prod='ssh -t cdarne@54.194.248.248 byobu'
-alias tekken_production='ssh -t cedric@54.229.214.46 screen -Rxl'
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
 alias find_broken_links='find -L . -type l -ls'
 
 alias gn='ssh -A -t login.ifuzioncorp.com screen -dRR'
 
-alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias redis_start='redis-server /usr/local/etc/redis.conf'
 alias redis_stop='redis-cli -p 6379 shutdown'
 alias memcached_start='memcached -d'
 alias memcached_stop='killall memcached'
-alias srs='pg_start; redis_start; memcached_start'
 alias tags='ctags-exuberant --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
 alias tagse='ctags-exuberant -e --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
 
