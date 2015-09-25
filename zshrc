@@ -47,9 +47,9 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 if [[ `uname` == *Linux* ]]
 then
-  plugins=(bundler gem git github go heroku node npm postgres rails rake ruby sublime sudo tmux vagrant zeus)
+  plugins=(colorize emacs sublime sudo tmux)
 else
-  plugins=(brew bundler gem git github go heroku node npm osx postgres rails rake ruby sublime sudo tmux vagrant zeus)
+  plugins=(brew colorize emacs osx postgres sudo tmux)
 fi
 
 source $ZSH/oh-my-zsh.sh
