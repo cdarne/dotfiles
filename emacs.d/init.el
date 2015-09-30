@@ -123,7 +123,7 @@
 (require 'smooth-scrolling)
 
 ;; lisp / slime config
-(setq inferior-lisp-program "/home/cdarne/sbcl/bin/sbcl")
+(setq inferior-lisp-program (concat (getenv "SBCL_ROOT") "/bin/sbcl"))
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
