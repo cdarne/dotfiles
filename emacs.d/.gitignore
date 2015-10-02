@@ -4,6 +4,8 @@ ede-projects.el
 elpa
 eshell
 ido.last
+projectile-bookmarks.eld
+projectile.cache
 smex-items
 tramp
 url

@@ -31,11 +31,13 @@
     flycheck
     go-mode
     helm
+    helm-projectile
     magit
     multi-term
     neotree
     org
     paredit
+    projectile
     slime
     smart-mode-line
     smex
