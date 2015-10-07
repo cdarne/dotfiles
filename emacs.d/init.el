@@ -131,5 +131,7 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+(global-set-key (kbd "C-x e") 'helm-mt)
+
 (provide 'init)
 ;;; init.el ends here

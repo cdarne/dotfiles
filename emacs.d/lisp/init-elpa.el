@@ -28,6 +28,7 @@
     ac-slime
     erlang
     evil
+    exec-path-from-shell
     flycheck
     go-mode
     helm
