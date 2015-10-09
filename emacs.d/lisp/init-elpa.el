@@ -41,7 +41,6 @@
     projectile
     slime
     smart-mode-line
-    smex
     web-mode)
   "A list of packages to ensure are installed at launch.")
 

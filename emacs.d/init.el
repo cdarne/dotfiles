@@ -51,22 +51,35 @@
 (setq redisplay-dont-pause t)
 
 ;; Helm
+(require 'helm)
 (require 'helm-config)
+
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
+
 (define-key helm-command-map (kbd "o") 'helm-occur)
 (define-key helm-command-map (kbd "g") 'helm-do-grep)
+(define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
 
-;; Ido
-(ido-mode +1)
-;;(ido-everywhere t)
-;;(setq ido-enable-flex-matching t)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x e") 'helm-mt)
 
-;; smex
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
+
+(when (executable-find "curl")
+  (setq helm-google-suggest-use-curl-p t))
+
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-buffers-fuzzy-matching           t
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-ff-file-name-history-use-recentf t)
+
+(helm-mode 1)
 
 ;; Smart mode line
 (sml/setup)
@@ -131,7 +144,6 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
-(global-set-key (kbd "C-x e") 'helm-mt)
 
 (provide 'init)
 ;;; init.el ends here
