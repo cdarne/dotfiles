@@ -39,10 +39,9 @@
 ;; increase font size for better readability
 (set-face-attribute 'default nil :height 120)
 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs
-   '("PATH")))
+(exec-path-from-shell-initialize)
+(exec-path-from-shell-copy-envs
+ '("PATH"))
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
@@ -100,12 +99,35 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; auto-completion
-(require 'go-autocomplete)
 (require 'auto-complete-config)
 (ac-config-default)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-(eval-after-load "auto-complete"
-   '(add-to-list 'ac-modes 'slime-repl-mode))
+(setq-default ac-dwim nil) ; To get pop-ups with docs even if a word is uniquely completed
+
+; Use Emacs' built-in TAB completion hooks to trigger AC (Emacs >= 23.2)
+(setq tab-always-indent 'complete)  ; use TAB when auto-complete is disabled
+(add-to-list 'completion-styles 'initials t)
+(setq completion-cycle-threshold 5) ; Stop completion-at-point from popping up completion buffers so eagerly
+
+(setq c-tab-always-indent nil
+      c-insert-tab-function 'indent-for-tab-command)
+
+(defun sanityinc/auto-complete-at-point ()
+  (when (and (not (minibufferp))
+	     (fboundp 'auto-complete-mode)
+	     auto-complete-mode)
+    #'auto-complete))
+
+(defun sanityinc/never-indent ()
+  (set (make-local-variable 'indent-line-function) (lambda () 'noindent)))
+
+(defun set-auto-complete-as-completion-at-point-function ()
+  (setq completion-at-point-functions
+        (cons 'sanityinc/auto-complete-at-point
+              (remove 'sanityinc/auto-complete-at-point completion-at-point-functions))))
+
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+(require 'go-autocomplete)
 
 ;; Tab/indentation config
 (setq-default tab-width 4
