@@ -146,6 +146,8 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
+(setq org-startup-indented t)
+
 
 ;; Window navigation
 (global-set-key (kbd "<C-tab>") 'other-window)
