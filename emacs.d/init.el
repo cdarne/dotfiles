@@ -65,7 +65,6 @@
 
 (define-key helm-command-map (kbd "o") 'helm-occur)
 (define-key helm-command-map (kbd "g") 'helm-do-grep)
-(define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
@@ -82,7 +81,8 @@
       helm-buffers-fuzzy-matching           t
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-      helm-ff-file-name-history-use-recentf t)
+      helm-ff-file-name-history-use-recentf t
+      helm-ff-auto-update-initial-value     t) ; activate auto-completion
 
 (helm-mode 1)
 
@@ -147,7 +147,6 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (setq org-startup-indented t)
-
 
 ;; Window navigation
 (global-set-key (kbd "<C-tab>") 'other-window)
