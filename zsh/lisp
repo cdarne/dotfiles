@@ -1,3 +1,8 @@
-export SBCL_ROOT="$HOME/sbcl"
-export PATH="$SBCL_ROOT/bin:$PATH"
-export SBCL_HOME="$SBCL_ROOT/lib/sbcl"
+if [[ `uname` == *Linux* ]]
+then
+  export SBCL_ROOT="$HOME/sbcl"
+  export PATH="$SBCL_ROOT/bin:$PATH"
+  export SBCL_HOME="$SBCL_ROOT/lib/sbcl"
+else
+  export SBCL_HOME="/usr/local/lib/sbcl"
+fi

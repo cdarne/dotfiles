@@ -24,14 +24,15 @@
 (package-initialize)
 
 (defvar custom-packages
-  '(auto-complete
-    ac-slime
+  '(ac-slime
+    auto-complete
     erlang
     evil
     exec-path-from-shell
     flycheck
     go-mode
     helm
+    helm-mt
     helm-projectile
     magit
     multi-term

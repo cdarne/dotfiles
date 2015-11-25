@@ -47,7 +47,7 @@
 (setq create-lockfiles nil)
 
 ;; Tweak to make display more responsive
-(setq redisplay-dont-pause t)
+;(setq redisplay-dont-pause t)
 
 (setq visible-bell t
       ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
@@ -164,7 +164,7 @@
 (require 'smooth-scrolling)
 
 ;; lisp / slime config
-(setq inferior-lisp-program (concat (getenv "SBCL_ROOT") "/bin/sbcl"))
+(setq inferior-lisp-program "sbcl")
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
