@@ -37,7 +37,7 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 140)
 
 (exec-path-from-shell-initialize)
 (exec-path-from-shell-copy-envs
@@ -49,8 +49,7 @@
 ;; Tweak to make display more responsive
 ;(setq redisplay-dont-pause t)
 
-(setq visible-bell t
-      ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
+(setq ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
       save-interprogram-paste-before-kill t ; Emacs will first save the clipboard to its kill ring, preventing you from losing the old clipboard data when killing text
       mouse-yank-at-point t ; inserts the text at point, regardless of where you clicked or even which of the frame’s windows you clicked on
       load-prefer-newer t ; when a file is updated outside Emacs reload it
@@ -157,6 +156,9 @@
 ;; Get some vim awesomeness
 (global-set-key (kbd "C-*") 'evil-search-symbol-forward)
 (global-set-key (kbd "C-#") 'evil-search-symbol-backward)
+
+(global-set-key (kbd "<home>") 'move-beginning-of-line) ; Bind home to beginning of the line
+(global-set-key (kbd "<end>") 'move-end-of-line) ; Bind end to end of the line
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)

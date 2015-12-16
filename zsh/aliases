@@ -31,3 +31,7 @@ alias tagse='ctags-exuberant -e --recurse=yes --tag-relative=yes --exclude=.git 
 
 # commands starting with % for pasting from web
 alias %=' '
+
+alias awshib='aws --profile salt'
+alias awsml='aws --profile magic-live'
+alias awsms='aws --profile magic-stage'
