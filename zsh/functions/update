@@ -1,16 +1,4 @@
-go get -u -v github.com/nsf/gocode \
-   golang.org/x/tools/cmd/... \
-   github.com/rogpeppe/godef \
-   github.com/golang/lint/golint \
-   github.com/kisielk/errcheck \
-   github.com/jstemmer/gotags \
-   github.com/smartystreets/goconvey \
-   github.com/tools/godep
-
-OLD_DIR=`pwd`
-cd ~/.rbenv && git pull origin master
-cd ~/.rbenv/plugins/ruby-build && git pull origin master
-cd ~/.oh-my-zsh && git pull origin master
-cd ~/.dotfiles && git pull origin master
-cp $GOPATH/src/github.com/nsf/gocode/emacs/go-autocomplete.el ~/.emacs.d/lisp/
-cd "$OLD_DIR"
+sudo pip install -U awscli
+sudo gem update
+git -C ~/.oh-my-zsh pull
+git -C ~/.dotfiles pull
