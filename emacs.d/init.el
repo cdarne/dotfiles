@@ -20,6 +20,7 @@
  '(display-time-mode t)
  '(inhibit-startup-screen t)
  '(scroll-bar-mode nil)
+ '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
@@ -40,14 +41,13 @@
 (set-face-attribute 'default nil :height 140)
 
 (exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-envs
- '("PATH"))
+(exec-path-from-shell-copy-envs '("PATH"))
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
 ;; Tweak to make display more responsive
-;(setq redisplay-dont-pause t)
+(setq redisplay-dont-pause t)
 
 (setq ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
       save-interprogram-paste-before-kill t ; Emacs will first save the clipboard to its kill ring, preventing you from losing the old clipboard data when killing text
@@ -175,6 +175,13 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+(defun my-sh-mode-hook ()
+  "My settings for 'sh-mode'."
+  (interactive)
+  (setq sh-basic-offset 2
+        sh-indentation 2))
+
+(add-hook 'sh-mode-hook 'my-sh-mode-hook)
 
 (provide 'init)
 ;;; init.el ends here

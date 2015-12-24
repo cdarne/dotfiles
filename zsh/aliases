@@ -45,3 +45,11 @@ parse-ec2-instance () {
 for app in hl ml ms ss sl; do
     eval "${app}ls () { aws${app} ec2 describe-instances --filter \"Name=instance-state-name,Values=running\" | parse-ec2-instance }"
 done
+
+gitr () {
+    for i in $(find . -type d -name .git -exec dirname {} \;); do
+        echo "\033[0;32m[$i]\033[0m"
+        git -C $i $@
+        echo
+    done
+}

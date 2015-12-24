@@ -1,4 +1,26 @@
-sudo pip install -U awscli
-sudo gem update
-git -C ~/.oh-my-zsh pull
-git -C ~/.dotfiles pull
+apt_tasks () {
+  sudo apt-get update && sudo apt-get upgrade &&\
+    sudo apt-get autoclean && sudo apt-get autoremove
+}
+
+python_tasks () {
+  sudo pip install -U awscli
+}
+
+ruby_tasks () {
+  gem update --system
+  gem update
+  rbenv rehash
+}
+
+git_tasks () {
+  for repo in ~/.oh-my-zsh ~/.dotfiles ~/.rbenv ~/.rbenv/plugins/*; do
+    echo "[Updating $repo]"
+    git -C $repo pull
+  done
+}
+
+apt_tasks
+python_tasks
+ruby_tasks
+git_tasks
