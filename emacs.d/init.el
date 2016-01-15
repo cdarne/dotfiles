@@ -49,8 +49,7 @@
 ;; Tweak to make display more responsive
 ;(setq redisplay-dont-pause t)
 
-(setq visible-bell t
-      ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
+(setq ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
       save-interprogram-paste-before-kill t ; Emacs will first save the clipboard to its kill ring, preventing you from losing the old clipboard data when killing text
       mouse-yank-at-point t ; inserts the text at point, regardless of where you clicked or even which of the frame’s windows you clicked on
       load-prefer-newer t ; when a file is updated outside Emacs reload it
@@ -173,6 +172,12 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+;; Ruby config
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 (provide 'init)
 ;;; init.el ends here

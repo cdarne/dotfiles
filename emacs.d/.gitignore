@@ -12,3 +12,4 @@ url
 recentf
 flycheck_init.el
 *~
+rake.cache
