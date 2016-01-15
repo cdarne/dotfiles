@@ -20,6 +20,7 @@
  '(display-time-mode t)
  '(inhibit-startup-screen t)
  '(scroll-bar-mode nil)
+ '(menu-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
@@ -37,17 +38,16 @@
       `((".*" ,temporary-file-directory t)))
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 140)
 
 (exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-envs
- '("PATH"))
+(exec-path-from-shell-copy-envs '("PATH"))
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
 
 ;; Tweak to make display more responsive
-;(setq redisplay-dont-pause t)
+(setq redisplay-dont-pause t)
 
 (setq ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
       save-interprogram-paste-before-kill t ; Emacs will first save the clipboard to its kill ring, preventing you from losing the old clipboard data when killing text
@@ -157,6 +157,9 @@
 (global-set-key (kbd "C-*") 'evil-search-symbol-forward)
 (global-set-key (kbd "C-#") 'evil-search-symbol-backward)
 
+(global-set-key (kbd "<home>") 'move-beginning-of-line) ; Bind home to beginning of the line
+(global-set-key (kbd "<end>") 'move-end-of-line) ; Bind end to end of the line
+
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key (kbd "C-x t") 'neotree-toggle)
@@ -178,6 +181,14 @@
 (add-hook 'ruby-mode-hook 'ruby-electric-mode)
 
 (add-hook 'robe-mode-hook 'ac-robe-setup)
+
+(defun my-sh-mode-hook ()
+  "My settings for 'sh-mode'."
+  (interactive)
+  (setq sh-basic-offset 2
+        sh-indentation 2))
+
+(add-hook 'sh-mode-hook 'my-sh-mode-hook)
 
 (provide 'init)
 ;;; init.el ends here

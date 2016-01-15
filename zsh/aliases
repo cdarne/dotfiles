@@ -31,3 +31,25 @@ alias tagse='ctags-exuberant -e --recurse=yes --tag-relative=yes --exclude=.git 
 
 # commands starting with % for pasting from web
 alias %=' '
+
+alias awshl='aws --profile salt'
+alias awsml='aws --profile magic-live'
+alias awsms='aws --profile magic-stage'
+alias awsss='aws --profile saber-stage'
+alias awssl='aws --profile saber-live'
+
+parse-ec2-instance () {
+    jq '.Reservations[].Instances[] | "\(.Tags | map(select(.Key == "Name")) | .[].Value) \(.PublicIpAddress)"' --raw-output | sort
+}
+
+for app in hl ml ms ss sl; do
+    eval "${app}ls () { aws${app} ec2 describe-instances --filter \"Name=instance-state-name,Values=running\" | parse-ec2-instance }"
+done
+
+gitr () {
+    for i in $(find . -type d -name .git -exec dirname {} \;); do
+        echo "\033[0;32m[$i]\033[0m"
+        git -C $i $@
+        echo
+    done
+}
