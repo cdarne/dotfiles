@@ -166,6 +166,13 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+;; Ruby config
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)
+
+(add-hook 'robe-mode-hook 'ac-robe-setup)
+
 (defun my-sh-mode-hook ()
   "My settings for 'sh-mode'."
   (interactive)
