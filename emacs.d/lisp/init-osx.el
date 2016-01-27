@@ -7,6 +7,8 @@
   (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
     (normal-top-level-add-subdirs-to-load-path))
   
-  (setq erlang-root-dir "/usr/local/lib/erlang"))
+  (setq erlang-root-dir "/usr/local/lib/erlang")
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-envs '("PATH")))
 
 (provide 'init-osx)

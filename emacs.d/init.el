@@ -1,8 +1,8 @@
-;;; init.el --- emacs config
+;;; init.el --- My Emacs config
 
 ;;; Commentary:
 
-;; Does all the config for emacs
+;; Does all the config for Emacs
 
 ;;; Code:
 
@@ -19,8 +19,8 @@
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(display-time-mode t)
  '(inhibit-startup-screen t)
- '(scroll-bar-mode nil)
  '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
@@ -39,9 +39,6 @@
 
 ;; increase font size for better readability
 (set-face-attribute 'default nil :height 140)
-
-(exec-path-from-shell-initialize)
-(exec-path-from-shell-copy-envs '("PATH"))
 
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
@@ -129,7 +126,7 @@
 (require 'go-autocomplete)
 
 ;; Tab/indentation config
-(setq-default tab-width 4
+(setq-default tab-width 2
               standard-indent 2
               indent-tabs-mode nil)
 
@@ -160,12 +157,6 @@
 (global-set-key (kbd "<home>") 'move-beginning-of-line) ; Bind home to beginning of the line
 (global-set-key (kbd "<end>") 'move-end-of-line) ; Bind end to end of the line
 
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(global-set-key (kbd "C-x t") 'neotree-toggle)
-
-(require 'smooth-scrolling)
-
 ;; lisp / slime config
 (setq inferior-lisp-program "sbcl")
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
@@ -183,5 +174,23 @@
 
 (add-hook 'sh-mode-hook 'my-sh-mode-hook)
 
+;; JavaScript config
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+(defun my-js-mode-hook ()
+  "My settings for 'js-mode'."
+  (interactive)
+  (setq js-indent-level 2))
+
+(add-hook 'js-mode-hook 'my-js-mode-hook)
+
 (provide 'init)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

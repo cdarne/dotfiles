@@ -24,7 +24,7 @@
 (package-initialize)
 
 (defvar custom-packages
-  '(ac-slime
+  '(ac-inf-ruby
     auto-complete
     erlang
     evil
@@ -34,15 +34,20 @@
     helm
     helm-mt
     helm-projectile
+    inf-ruby
+    js2-mode
+    json-mode
     magit
     multi-term
-    neotree
     org
     paredit
     projectile
-    slime
+    restclient
+    ruby-electric
+    ruby-tools
     smart-mode-line
-    web-mode)
+    web-mode
+    yaml-mode)
   "A list of packages to ensure are installed at launch.")
 
 (defun every (predicate-function list)

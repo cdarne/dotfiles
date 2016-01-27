@@ -32,24 +32,26 @@ alias tagse='ctags-exuberant -e --recurse=yes --tag-relative=yes --exclude=.git 
 # commands starting with % for pasting from web
 alias %=' '
 
-alias awshl='aws --profile salt'
-alias awsml='aws --profile magic-live'
-alias awsms='aws --profile magic-stage'
-alias awsss='aws --profile saber-stage'
-alias awssl='aws --profile saber-live'
+gitr () {  
+  for repo in $(find . -type d -name .git -exec dirname {} \;); do
+    echo "\n\033[0;32m[$repo]\033[0m"
+    git -C $repo $@
+  done
+}
 
 parse-ec2-instance () {
-    jq '.Reservations[].Instances[] | "\(.Tags | map(select(.Key == "Name")) | .[].Value) \(.PublicIpAddress)"' --raw-output | sort
+  jq '.Reservations[].Instances[] | "\(.Tags | map(select(.Key == "Name")) | .[].Value) \(.PublicIpAddress)"' --raw-output | sort
 }
 
-for app in hl ml ms ss sl; do
-    eval "${app}ls () { aws${app} ec2 describe-instances --filter \"Name=instance-state-name,Values=running\" | parse-ec2-instance }"
+local hibenvs
+typeset -A hibenvs
+hibenvs=(hl salt ml magic-live ms magic-stage sl saber-live ss saber-stage zs zoo-stage vs vegas-stage vl vegas-live)
+
+for k in "${(@k)hibenvs}"; do
+  eval "alias ${k}aws='aws --profile $hibenvs[$k]'"
+  eval "${k}ls () { ${k}aws ec2 describe-instances --filter \"Name=instance-state-name,Values=running\" | parse-ec2-instance }"
+  eval "alias ${k}s3='${k}aws s3'"
+  eval "alias ${k}s3cmd='s3cmd -c ~/.s3cfg-$hibenvs[$k]'"
 done
 
-gitr () {
-    for i in $(find . -type d -name .git -exec dirname {} \;); do
-        echo "\033[0;32m[$i]\033[0m"
-        git -C $i $@
-        echo
-    done
-}
+

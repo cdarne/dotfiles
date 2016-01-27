@@ -4,7 +4,7 @@ apt_tasks () {
 }
 
 python_tasks () {
-  sudo pip install -U awscli
+  sudo pip install --upgrade awscli wheel virtualenv
 }
 
 ruby_tasks () {
@@ -14,10 +14,7 @@ ruby_tasks () {
 }
 
 git_tasks () {
-  for repo in ~/.oh-my-zsh ~/.dotfiles ~/.rbenv ~/.rbenv/plugins/*; do
-    echo "[Updating $repo]"
-    git -C $repo pull
-  done
+  parallel "echo '\033[0;32m[{}]\033[0m'; git -C {} pull" ::: ~/.oh-my-zsh ~/.rbenv ~/.rbenv/plugins/*
 }
 
 apt_tasks
