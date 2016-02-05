@@ -13,3 +13,4 @@ recentf
 flycheck_init.el
 *~
 rake.cache
+session.*
