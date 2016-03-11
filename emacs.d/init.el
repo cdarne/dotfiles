@@ -189,9 +189,15 @@
 (defun my-js-mode-hook ()
   "My settings for 'js-mode'."
   (interactive)
-  (setq js-indent-level 2))
+  (setq js-indent-level 2
+        js2-basic-offset 2))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
+
+;; Saltstack
+(add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
+
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 
 (provide 'init)
 ;;; init.el ends here

@@ -43,15 +43,18 @@ parse-ec2-instance () {
   jq '.Reservations[].Instances[] | "\(.Tags | map(select(.Key == "Name")) | .[].Value) \(.PublicIpAddress)"' --raw-output | sort
 }
 
-local hibenvs
-typeset -A hibenvs
-hibenvs=(hl salt ml magic-live ms magic-stage sl saber-live ss saber-stage zs zoo-stage vs vegas-stage vl vegas-live)
+local -a hibenvs
+hibenvs=(hl ml ms sl ss zs vs vl)
 
-for k in "${(@k)hibenvs}"; do
-  eval "alias ${k}aws='aws --profile $hibenvs[$k]'"
+for k in $hibenvs; do
+  eval "alias ${k}aws='aws --profile $k'"
   eval "${k}ls () { ${k}aws ec2 describe-instances --filter \"Name=instance-state-name,Values=running\" | parse-ec2-instance }"
   eval "alias ${k}s3='${k}aws s3'"
-  eval "alias ${k}s3cmd='s3cmd -c ~/.s3cfg-$hibenvs[$k]'"
+  eval "alias ${k}s3cmd='s3cmd -c ~/.s3cfg-$k'"
+  eval "${k}sar () { /home/cdarne/workspace/ruby/saruman/bin/saruman \$@ --profile $k }"
+  eval "alias ${k}cons='${k}sar console'"
 done
 
-
+do-pg-alias() {
+  eval "alias ${1}psql${3}='psql -h $2'"
+}

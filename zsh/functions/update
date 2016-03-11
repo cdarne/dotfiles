@@ -4,7 +4,7 @@ apt_tasks () {
 }
 
 python_tasks () {
-  sudo pip install --upgrade awscli wheel virtualenv
+  sudo pip install --upgrade awscli wheel virtualenv youtube_dl
 }
 
 ruby_tasks () {

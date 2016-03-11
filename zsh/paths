@@ -1,3 +1,5 @@
+export PATH="$HOME/bin:$PATH"
+
 if [[ `uname` == *Linux* ]]
 then
   export PATH="/usr/local/heroku/bin:$PATH"
