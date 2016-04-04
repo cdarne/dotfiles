@@ -24,6 +24,13 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -37,14 +44,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
-
 ;; No need for ~ files when editing
 (setq create-lockfiles nil)
-
-;; Tweak to make display more responsive
-(setq redisplay-dont-pause t)
 
 (setq ediff-window-setup-function 'ediff-setup-windows-plain ; ediff options in minibuffer
       save-interprogram-paste-before-kill t ; Emacs will first save the clipboard to its kill ring, preventing you from losing the old clipboard data when killing text
@@ -69,9 +70,6 @@
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-z") 'helm-select-action) ; list actions using C-z
-
-(when (executable-find "curl")
-  (setq helm-google-suggest-use-curl-p t))
 
 (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-buffers-fuzzy-matching           t
@@ -167,10 +165,8 @@
 (helm-projectile-on)
 
 ;; Ruby config
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'ruby-mode-hook 'ruby-electric-mode)
-
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
 (defun my-sh-mode-hook ()
@@ -197,13 +193,5 @@
 ;; Saltstack
 (add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
 
-(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
-
 (provide 'init)
 ;;; init.el ends here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

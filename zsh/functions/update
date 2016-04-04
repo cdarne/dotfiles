@@ -8,6 +8,7 @@ python_tasks () {
 }
 
 ruby_tasks () {
+  gem install bundler pry pry-doc method_source
   gem update --system
   gem update
   rbenv rehash
