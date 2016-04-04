@@ -42,7 +42,6 @@
     org
     paredit
     projectile
-    restclient
     ruby-electric
     ruby-tools
     smart-mode-line
