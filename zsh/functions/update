@@ -4,14 +4,18 @@ apt_tasks () {
 }
 
 python_tasks () {
-  sudo pip install --upgrade awscli wheel virtualenv youtube_dl
+  sudo pip install --upgrade awscli wheel virtualenv yapf
 }
 
 ruby_tasks () {
-  gem install bundler pry pry-doc method_source
+  gem install bundler pry pry-doc method_source getopt
   gem update --system
   gem update
   rbenv rehash
+}
+
+golang_tasks () {
+ go get -u golang.org/x/tools/cmd/... github.com/rogpeppe/godef github.com/nsf/gocode github.com/golang/lint/golint
 }
 
 git_tasks () {
@@ -19,6 +23,8 @@ git_tasks () {
 }
 
 apt_tasks
-python_tasks
-ruby_tasks
-git_tasks
+python_tasks &
+ruby_tasks &
+golang_tasks &
+git_tasks &
+wait

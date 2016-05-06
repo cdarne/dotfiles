@@ -68,6 +68,7 @@ if has("gui_running")
   set guioptions-=m  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
+  set guifont=Ubuntu\ Mono
 
   if has("autocmd")
     " Automatically resize splits when resizing MacVim window

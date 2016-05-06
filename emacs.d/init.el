@@ -38,6 +38,8 @@
 (require 'init-elpa)
 (require 'init-osx)
 
+(exec-path-from-shell-initialize)
+
 ;; Backup files in /temp please
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -86,44 +88,22 @@
 (sml/setup)
 
 ;; Go config
-(require 'go-mode-autoloads)
-(setq gofmt-command "goimports")
-(add-hook 'before-save-hook #'gofmt-before-save)
-(add-hook 'go-mode-hook (lambda ()
-                          (local-set-key (kbd "M-.") #'godef-jump)))
+(exec-path-from-shell-copy-envs '("GOROOT" "GOPATH"))
+; Go oracle
+(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+(defun my-go-mode-hook ()
+  "My settings for 'go-mode'."
+  (interactive)
+  (setq gofmt-command "goimports")
+  ; Call Gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ; Godef jump key binding
+  (local-set-key (kbd "M-.") 'godef-jump)
+  (set (make-local-variable 'company-backends) '((company-go company-capf company-dabbrev-code) company-files company-dabbrev)))
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; auto-completion
-(require 'auto-complete-config)
-(ac-config-default)
-(setq-default ac-dwim nil) ; To get pop-ups with docs even if a word is uniquely completed
-
-; Use Emacs' built-in TAB completion hooks to trigger AC (Emacs >= 23.2)
-(setq tab-always-indent 'complete)  ; use TAB when auto-complete is disabled
-(add-to-list 'completion-styles 'initials t)
-(setq completion-cycle-threshold 5) ; Stop completion-at-point from popping up completion buffers so eagerly
-
-(setq c-tab-always-indent nil
-      c-insert-tab-function 'indent-for-tab-command)
-
-(defun sanityinc/auto-complete-at-point ()
-  (when (and (not (minibufferp))
-	     (fboundp 'auto-complete-mode)
-	     auto-complete-mode)
-    #'auto-complete))
-
-(defun sanityinc/never-indent ()
-  (set (make-local-variable 'indent-line-function) (lambda () 'noindent)))
-
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions
-        (cons 'sanityinc/auto-complete-at-point
-              (remove 'sanityinc/auto-complete-at-point completion-at-point-functions))))
-
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-(require 'go-autocomplete)
 
 ;; Tab/indentation config
 (setq-default tab-width 2
@@ -144,23 +124,26 @@
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (setq org-startup-indented t)
 
-;; Window navigation
-(global-set-key (kbd "<C-tab>") 'other-window)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (ruby . t)
+   (sh . t)))
+
 
 ;; Binds M-arrow keys to move window
 (windmove-default-keybindings 'meta)
 
 ;; Get some vim awesomeness
-(global-set-key (kbd "C-*") 'evil-search-symbol-forward)
-(global-set-key (kbd "C-#") 'evil-search-symbol-backward)
+;; (require 'evil)
+;; (global-set-key (kbd "C-*") 'evil-search-word-forward)
+;; (global-set-key (kbd "C-#") 'evil-search-word-backward)
 
 (global-set-key (kbd "<home>") 'move-beginning-of-line) ; Bind home to beginning of the line
 (global-set-key (kbd "<end>") 'move-end-of-line) ; Bind end to end of the line
 
 ;; lisp / slime config
 (setq inferior-lisp-program "sbcl")
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
@@ -169,13 +152,13 @@
 ;; Ruby config
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'ruby-mode-hook 'ruby-electric-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 (defun my-sh-mode-hook ()
   "My settings for 'sh-mode'."
   (interactive)
   (setq sh-basic-offset 2
-        sh-indentation 2))
+        sh-indentation 2)
+  (set (make-local-variable 'company-backends) (append company-backends '(company-shell))))
 
 (add-hook 'sh-mode-hook 'my-sh-mode-hook)
 
@@ -183,6 +166,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 
 (defun my-js-mode-hook ()
   "My settings for 'js-mode'."
@@ -195,5 +179,32 @@
 ;; Saltstack
 (add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
 
+;; Auto save on lost focus
+(defun save-all-buffers ()
+  "Save all unsaved buffers."
+    (interactive)
+    (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all-buffers)
+
+;; Completion
+(defun completion-config ()
+  "Setup completion config."
+  (interactive)
+  (setq company-idle-delay 0.2
+        company-tooltip-limit 10
+        company-minimum-prefix-length 2
+        tab-always-indent 'complete)
+  (global-company-mode t)
+  (setq company-backends '((company-capf company-dabbrev-code company-gtags company-etags company-keywords) company-files company-dabbrev)))
+
+(add-hook 'after-init-hook 'completion-config)
+
+;; python
+(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+
+
+
 (provide 'init)
 ;;; init.el ends here
+(put 'scroll-left 'disabled nil)

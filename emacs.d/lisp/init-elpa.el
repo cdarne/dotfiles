@@ -24,8 +24,7 @@
 (package-initialize)
 
 (defvar custom-packages
-  '(ac-inf-ruby
-    auto-complete
+  '(company
     erlang
     evil
     exec-path-from-shell
