@@ -127,9 +127,9 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
+   (sql . t)
    (ruby . t)
    (sh . t)))
-
 
 ;; Binds M-arrow keys to move window
 (windmove-default-keybindings 'meta)

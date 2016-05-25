@@ -4,7 +4,7 @@ apt_tasks () {
 }
 
 python_tasks () {
-  sudo pip install --upgrade awscli wheel virtualenv yapf
+  sudo pip install --upgrade awscli wheel virtualenv yapf docker-compose
 }
 
 ruby_tasks () {
