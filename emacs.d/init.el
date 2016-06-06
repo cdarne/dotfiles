@@ -117,7 +117,16 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(defun my-git-commit-setup-hook ()
+  "My settings for 'git-commit-setup'."
+  (interactive)
+  (setq git-commit-summary-max-length 72
+        git-commit-fill-column 80))
+
+(add-hook 'git-commit-setup-hook 'my-git-commit-setup-hook)
+
 ;; org mode key bindings
+;;(setq org-default-notes-file (concat org-directory "/notes.org"))
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
