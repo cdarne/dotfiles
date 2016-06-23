@@ -181,7 +181,10 @@
   "My settings for 'js-mode'."
   (interactive)
   (setq js-indent-level 2
-        js2-basic-offset 2))
+        js2-basic-offset 2
+        js2-bounce-indent-p t)
+  (tern-mode t)
+  (set (make-local-variable 'company-backends) '((company-tern company-capf company-dabbrev-code) company-files company-dabbrev)))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
