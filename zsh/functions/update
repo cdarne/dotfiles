@@ -23,7 +23,7 @@ git_tasks () {
 }
 
 node_tasks () {
-  sudo npm install -g tern
+  sudo npm install -g tern eslint
 }
 
 apt_tasks

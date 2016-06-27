@@ -99,7 +99,7 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
-  (set (make-local-variable 'company-backends) '((company-go company-capf company-dabbrev-code) company-files company-dabbrev)))
+  (set (make-local-variable 'company-backends) (append '(company-go) company-backends)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -162,12 +162,19 @@
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'ruby-mode-hook 'ruby-electric-mode)
 
+(defun my-ruby-mode-hook ()
+  "My settings for 'ruby-mode'."
+  (interactive)
+  (set (make-local-variable 'company-backends) (append '(company-robe) company-backends)))
+
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+
 (defun my-sh-mode-hook ()
   "My settings for 'sh-mode'."
   (interactive)
   (setq sh-basic-offset 2
         sh-indentation 2)
-  (set (make-local-variable 'company-backends) (append company-backends '(company-shell))))
+  (set (make-local-variable 'company-backends) (append '(company-shell) company-backends)))
 
 (add-hook 'sh-mode-hook 'my-sh-mode-hook)
 
@@ -184,7 +191,7 @@
         js2-basic-offset 2
         js2-bounce-indent-p t)
   (tern-mode t)
-  (set (make-local-variable 'company-backends) '((company-tern company-capf company-dabbrev-code) company-files company-dabbrev)))
+  (set (make-local-variable 'company-backends) (append '(company-tern) company-backends)))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
@@ -208,7 +215,7 @@
         company-minimum-prefix-length 2
         tab-always-indent 'complete)
   (global-company-mode t)
-  (setq company-backends '((company-capf company-dabbrev-code company-gtags company-etags company-keywords) company-files company-dabbrev)))
+  (setq company-backends '(company-capf (company-dabbrev-code company-keywords) company-files company-dabbrev)))
 
 (add-hook 'after-init-hook 'completion-config)
 
