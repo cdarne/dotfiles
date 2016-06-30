@@ -11,6 +11,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(align-c++-modes (quote (c++-mode c-mode java-mode js2-mode)))
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (wombat)))
@@ -56,6 +57,9 @@
       mouse-yank-at-point t ; inserts the text at point, regardless of where you clicked or even which of the frame’s windows you clicked on
       load-prefer-newer t ; when a file is updated outside Emacs reload it
       ediff-split-window-function 'split-window-horizontally)
+
+;; Custom key bindings
+(global-set-key (kbd "C-x C-.") 'find-file-at-point)
 
 ;; Helm
 (require 'helm)
@@ -222,7 +226,14 @@
 ;; python
 (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
 
+;; Easy buffer switching
+(defun switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+(global-set-key (kbd "<C-tab>") 'switch-to-previous-buffer)
 
 (provide 'init)
 ;;; init.el ends here
