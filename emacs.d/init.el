@@ -142,7 +142,8 @@
  '((emacs-lisp . t)
    (sql . t)
    (ruby . t)
-   (sh . t)))
+   (sh . t)
+   (js . t)))
 
 ;; Binds M-arrow keys to move window
 (windmove-default-keybindings 'meta)
