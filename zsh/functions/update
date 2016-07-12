@@ -4,7 +4,7 @@ apt_tasks () {
 }
 
 python_tasks () {
-  sudo pip install --upgrade awscli wheel virtualenv yapf
+  sudo pip install --upgrade awscli wheel virtualenv yapf docker-compose
 }
 
 ruby_tasks () {
@@ -22,9 +22,14 @@ git_tasks () {
   parallel "echo '\033[0;32m[{}]\033[0m'; git -C {} pull" ::: ~/.oh-my-zsh ~/.rbenv ~/.rbenv/plugins/*
 }
 
+node_tasks () {
+  sudo npm install -g tern eslint
+}
+
 apt_tasks
 python_tasks &
 ruby_tasks &
 golang_tasks &
 git_tasks &
+node_tasks &
 wait

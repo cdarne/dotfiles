@@ -11,6 +11,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(align-c++-modes (quote (c++-mode c-mode java-mode js2-mode)))
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(custom-enabled-themes (quote (wombat)))
@@ -57,6 +58,9 @@
       load-prefer-newer t ; when a file is updated outside Emacs reload it
       ediff-split-window-function 'split-window-horizontally)
 
+;; Custom key bindings
+(global-set-key (kbd "C-x C-.") 'find-file-at-point)
+
 ;; Helm
 (require 'helm)
 (require 'helm-config)
@@ -99,7 +103,7 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
-  (set (make-local-variable 'company-backends) '((company-go company-capf company-dabbrev-code) company-files company-dabbrev)))
+  (set (make-local-variable 'company-backends) (append '(company-go) company-backends)))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -117,7 +121,16 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(defun my-git-commit-setup-hook ()
+  "My settings for 'git-commit-setup'."
+  (interactive)
+  (setq git-commit-summary-max-length 72
+        git-commit-fill-column 80))
+
+(add-hook 'git-commit-setup-hook 'my-git-commit-setup-hook)
+
 ;; org mode key bindings
+;;(setq org-default-notes-file (concat org-directory "/notes.org"))
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -127,9 +140,9 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
+   (sql . t)
    (ruby . t)
    (sh . t)))
-
 
 ;; Binds M-arrow keys to move window
 (windmove-default-keybindings 'meta)
@@ -153,12 +166,19 @@
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'ruby-mode-hook 'ruby-electric-mode)
 
+(defun my-ruby-mode-hook ()
+  "My settings for 'ruby-mode'."
+  (interactive)
+  (set (make-local-variable 'company-backends) (append '(company-robe) company-backends)))
+
+(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+
 (defun my-sh-mode-hook ()
   "My settings for 'sh-mode'."
   (interactive)
   (setq sh-basic-offset 2
         sh-indentation 2)
-  (set (make-local-variable 'company-backends) (append company-backends '(company-shell))))
+  (set (make-local-variable 'company-backends) (append '(company-shell) company-backends)))
 
 (add-hook 'sh-mode-hook 'my-sh-mode-hook)
 
@@ -172,7 +192,10 @@
   "My settings for 'js-mode'."
   (interactive)
   (setq js-indent-level 2
-        js2-basic-offset 2))
+        js2-basic-offset 2
+        js2-bounce-indent-p t)
+  (tern-mode t)
+  (set (make-local-variable 'company-backends) (append '(company-tern) company-backends)))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
@@ -196,14 +219,21 @@
         company-minimum-prefix-length 2
         tab-always-indent 'complete)
   (global-company-mode t)
-  (setq company-backends '((company-capf company-dabbrev-code company-gtags company-etags company-keywords) company-files company-dabbrev)))
+  (setq company-backends '(company-capf (company-dabbrev-code company-keywords) company-files company-dabbrev)))
 
 (add-hook 'after-init-hook 'completion-config)
 
 ;; python
 (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
 
+;; Easy buffer switching
+(defun switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+(global-set-key (kbd "<C-tab>") 'switch-to-previous-buffer)
 
 (provide 'init)
 ;;; init.el ends here

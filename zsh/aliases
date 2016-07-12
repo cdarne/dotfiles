@@ -39,6 +39,16 @@ gitr () {
   done
 }
 
+dor () {
+  for d in $(find -maxdepth 1 -type d | grep -ve '^.$'); do
+    echo "\n\033[0;32m[$d]\033[0m"
+    old=$(pwd)
+    cd $d;
+    $@
+    cd $old;
+  done
+}
+
 parse-ec2-instance () {
   jq '.Reservations[].Instances[] | "\(.Tags | map(select(.Key == "Name")) | .[].Value) \(.PublicIpAddress)"' --raw-output | sort
 }
