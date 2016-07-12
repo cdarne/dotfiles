@@ -15,7 +15,7 @@ alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG
 alias ed='emacs --daemon'
 alias ek='emacsclient --eval "(kill-emacs)"'
 alias e='emacsclient -t'
-alias ec='emacsclient -c'
+alias ec='nohup emacsclient -c -a "" > /dev/null &'
 
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
 alias find_broken_links='find -L . -type l -ls'
