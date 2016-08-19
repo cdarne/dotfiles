@@ -30,7 +30,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 120 :width normal)))))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -194,9 +194,7 @@
   (interactive)
   (setq js-indent-level 2
         js2-basic-offset 2
-        js2-bounce-indent-p t)
-  (tern-mode t)
-  (set (make-local-variable 'company-backends) (append '(company-tern) company-backends)))
+        js2-bounce-indent-p t))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
 
@@ -223,9 +221,6 @@
   (setq company-backends '(company-capf (company-dabbrev-code company-keywords) company-files company-dabbrev)))
 
 (add-hook 'after-init-hook 'completion-config)
-
-;; python
-(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
 
 ;; Easy buffer switching
 (defun switch-to-previous-buffer ()

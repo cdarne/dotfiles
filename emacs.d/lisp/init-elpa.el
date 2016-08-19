@@ -29,7 +29,6 @@
     company
     company-inf-ruby
     company-shell
-    company-tern
     company-web
     dockerfile-mode
     elixir-mode
@@ -55,13 +54,11 @@
     nginx-mode
     paredit
     projectile
-    py-yapf
     rake
     robe
     ruby-electric
     ruby-tools
     smart-mode-line
-    tern
     web-mode
     yaml-mode)
   "A list of packages to ensure are installed at launch.")
