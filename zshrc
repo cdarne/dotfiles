@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="afowler"
+export ZSH_THEME="cdarne"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -37,7 +37,7 @@ COMPLETION_WAITING_DOTS="true"
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment following line if you want to  shown in the command execution time stamp 
+# Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
@@ -46,6 +46,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(aws colorize docker docker-compose git sudo)
+
+ZSH_CUSTOM=~/.zsh_custom
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,3 +61,8 @@ source $ZSH/oh-my-zsh.sh
 . ~/.zsh/ruby
 . ~/.zsh/android
 . ~/.zsh/lisp
+. ~/.zsh/elixir
+. ~/.zsh/node
+. ~/.zsh/bluemix
+
+[[ -f ~/.zsh_specific ]] && source ~/.zsh_specific

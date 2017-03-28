@@ -1,0 +1,1 @@
+export PATH="$HOME/elixir/bin:$PATH"

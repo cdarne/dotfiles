@@ -1,16 +1,6 @@
-apt_tasks () {
-  sudo apt-get update && sudo apt-get upgrade &&\
-    sudo apt-get autoclean && sudo apt-get autoremove
-}
-
-python_tasks () {
-  sudo pip install --upgrade awscli wheel virtualenv yapf docker-compose
-}
-
 ruby_tasks () {
-  gem install bundler pry pry-doc method_source getopt
+  gem install bundler pry pry-doc method_source
   gem update --system
-  gem update
   rbenv rehash
 }
 
@@ -19,15 +9,13 @@ golang_tasks () {
 }
 
 git_tasks () {
-  parallel "echo '\033[0;32m[{}]\033[0m'; git -C {} pull" ::: ~/.oh-my-zsh ~/.rbenv ~/.rbenv/plugins/*
+  git -C ~/.oh-my-zsh pull
 }
 
 node_tasks () {
-  sudo npm install -g tern eslint elm
+  npm install -g npm tern eslint serve bower polymer-cli
 }
 
-apt_tasks
-python_tasks &
 ruby_tasks &
 golang_tasks &
 git_tasks &

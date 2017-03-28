@@ -15,10 +15,10 @@ Plugin 'tpope/vim-sensible' " Defaults for vim
 Plugin 'scrooloose/nerdtree' " Tree files view
 Plugin 'scrooloose/syntastic' " Syntax checker
 Plugin 'kien/ctrlp.vim' " Quick open files
-Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
+"Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
 
 " Tags
-Plugin 'majutsushi/tagbar' "class outline viewer
+"Plugin 'majutsushi/tagbar' "class outline viewer
 "Plugin 'xolox/vim-misc' " Dependency for vim-easytags
 "Plugin 'xolox/vim-easytags' "Automated tag file generation and syntax highlighting
 
@@ -32,13 +32,19 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
 " Ruby
-"Plugin 'tpope/vim-bundler'
-"Plugin 'tpope/vim-rails'
-"Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
 Plugin 'vim-ruby/vim-ruby'
 "Plugin 'skalnik/vim-vroom' " Test runner
 
 Plugin 'fatih/vim-go'
+
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'slashmili/alchemist.vim'
+
+Plugin 'lambdatoast/elm.vim'
 
 " Color themes
 Plugin 'morhetz/gruvbox'
