@@ -1,8 +1,1 @@
-export PATH="$HOME/bin:$PATH"
-
-if [[ `uname` == *Linux* ]]
-then
-  export PATH="/usr/local/heroku/bin:$PATH"
-else
-  export PATH="/Library/TeX/Root/bin/x86_64-darwin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-fi
+export PATH="$HOME/.bin:$PATH"

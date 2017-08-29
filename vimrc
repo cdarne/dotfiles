@@ -11,11 +11,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins
+Plugin 'tpope/vim-surround' " Surround commands
 Plugin 'tpope/vim-sensible' " Defaults for vim
 Plugin 'scrooloose/nerdtree' " Tree files view
 Plugin 'scrooloose/syntastic' " Syntax checker
 Plugin 'kien/ctrlp.vim' " Quick open files
-"Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
+Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
 
 " Tags
 "Plugin 'majutsushi/tagbar' "class outline viewer
@@ -48,6 +49,7 @@ Plugin 'lambdatoast/elm.vim'
 
 " Color themes
 Plugin 'morhetz/gruvbox'
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
@@ -197,8 +199,6 @@ let g:go_fmt_command = "goimports"
 
 au BufWritePost,FileWritePost *.go execute 'GoLint'
 
-
-
 " neocomplete
 "
 " Disable AutoComplPop.
@@ -248,10 +248,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-
-
 " ctrlp
 "
 let g:ctrlp_working_path_mode = ''
 nnoremap <leader>. :CtrlPTag<cr>
-

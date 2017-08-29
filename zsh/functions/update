@@ -13,11 +13,11 @@ git_tasks () {
 }
 
 node_tasks () {
-  npm install -g npm tern eslint serve bower polymer-cli
+  yarn global install tern eslint serve bower polymer-cli
 }
 
 ruby_tasks &
-golang_tasks &
+#golang_tasks &
 git_tasks &
 node_tasks &
 wait

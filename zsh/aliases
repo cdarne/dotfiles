@@ -7,10 +7,6 @@ alias l="ls -lAh"
 alias ll="ls -lh"
 alias la='ls -A'
 
-# git
-alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
-alias changelog='git log `git log -1 --format=%H -- CHANGELOG*`..; cat CHANGELOG*'
-
 # Emacs
 alias ed='emacs --daemon'
 alias ek='emacsclient --eval "(kill-emacs)"'
@@ -19,55 +15,8 @@ ec () {
   nohup emacsclient --create-frame --alternate-editor "" "$@" > /dev/null &
 }
 
-
 alias hgrep='sudo ngrep -W byline -d p5p1 port 80'
 alias find_broken_links='find -L . -type l -ls'
 
-alias gn='ssh -A -t login.ifuzioncorp.com screen -dRR'
-
-alias redis_start='redis-server /usr/local/etc/redis.conf'
-alias redis_stop='redis-cli -p 6379 shutdown'
-alias memcached_start='memcached -d'
-alias memcached_stop='killall memcached'
-alias tags='ctags-exuberant --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
-alias tagse='ctags-exuberant -e --recurse=yes --tag-relative=yes --exclude=.git --langmap=php:.engine.inc.module.theme.install.php --PHP-kinds=+cf-v .'
-
 # commands starting with % for pasting from web
 alias %=' '
-
-gitr () {  
-  for repo in $(find . -type d -name .git -exec dirname {} \;); do
-    echo "\n\033[0;32m[$repo]\033[0m"
-    git -C $repo $@
-  done
-}
-
-dor () {
-  for d in $(find -maxdepth 1 -type d | grep -ve '^.$'); do
-    echo "\n\033[0;32m[$d]\033[0m"
-    old=$(pwd)
-    cd $d;
-    $@
-    cd $old;
-  done
-}
-
-parse-ec2-instance () {
-  jq '.Reservations[].Instances[] | "\(.Tags | map(select(.Key == "Name")) | .[].Value) \(.PublicIpAddress)"' --raw-output | sort
-}
-
-local -a hibenvs
-hibenvs=(hl ml ms sl ss zs vs vl)
-
-for k in $hibenvs; do
-  eval "alias ${k}aws='aws --profile $k'"
-  eval "${k}ls () { ${k}aws ec2 describe-instances --filter \"Name=instance-state-name,Values=running\" | parse-ec2-instance }"
-  eval "alias ${k}s3='${k}aws s3'"
-  eval "alias ${k}s3cmd='s3cmd -c ~/.s3cfg-$k'"
-  eval "${k}sar () { /home/cdarne/workspace/ruby/saruman/bin/saruman \$@ --profile $k }"
-  eval "alias ${k}cons='${k}sar console'"
-done
-
-do-pg-alias() {
-  eval "alias ${1}psql${3}='psql -h $2'"
-}

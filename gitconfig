@@ -1,6 +1,6 @@
 [user]
 	name = Cedric Darne
-	email = cdarne@hibernum.com
+	email = cedric.darne@gmail.com
 [color]
 	ui = auto
 [core]
@@ -14,4 +14,4 @@
 [alias]
 	pr = merge --no-commit --no-ff
 [push]
-	default = matching
+	default = simple

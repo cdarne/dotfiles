@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift('.')
+$LOAD_PATH.unshift('test')
+
+files = Dir[ARGV[0]]
+
+puts "Running tests for:"
+puts *files
+files.each{|f| require f}

@@ -1,2 +1,1 @@
-export ANDROID_HOME="/usr/local/opt/android-sdk"
-export PATH="$ANDROID_HOME/bin:$PATH"
+export ANDROID_SDK_ROOT=/Users/cedric.darne/Library/Android/sdk
