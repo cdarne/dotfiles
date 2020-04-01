@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(colorize docker docker-compose git sudo)
+plugins=(colorize docker docker-compose mix sudo)
 
 ZSH_CUSTOM=~/.zsh_custom
 
@@ -62,5 +62,9 @@ source $ZSH/oh-my-zsh.sh
 . ~/.zsh/android
 . ~/.zsh/elixir
 . ~/.zsh/node
+#. ~/.zsh/google-cloud
+. ~/.zsh/fzf
 
 [[ -f ~/.zsh_specific ]] && source ~/.zsh_specific
+
+export PATH=/Users/cedric.darne/.local/bin:$PATH

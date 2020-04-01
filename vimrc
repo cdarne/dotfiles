@@ -1,65 +1,72 @@
 set nocompatible
 filetype off
 
-" Vundle config
+"" minpac config
+packadd minpac
+call minpac#init()
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" commands:
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
 " Plugins
-Plugin 'tpope/vim-surround' " Surround commands
-Plugin 'tpope/vim-sensible' " Defaults for vim
-Plugin 'scrooloose/nerdtree' " Tree files view
-Plugin 'scrooloose/syntastic' " Syntax checker
-Plugin 'kien/ctrlp.vim' " Quick open files
-Plugin 'mileszs/ack.vim' " Ack (grep replacement) wrapper
+call minpac#add('tpope/vim-surround') " Surround commands
+call minpac#add('tpope/vim-sensible') " Defaults for vim
+call minpac#add('scrooloose/nerdtree') " Tree files view
+call minpac#add('vim-syntastic/syntastic') " Syntax checker
+call minpac#add('Chiel92/vim-autoformat') " Syntax checker
 
 " Tags
-"Plugin 'majutsushi/tagbar' "class outline viewer
-"Plugin 'xolox/vim-misc' " Dependency for vim-easytags
-"Plugin 'xolox/vim-easytags' "Automated tag file generation and syntax highlighting
+"call minpac#add('majutsushi/tagbar') "class outline viewer
+"call minpac#add('xolox/vim-misc') " Dependency for vim-easytags
+"call minpac#add('xolox/vim-easytags') "Automated tag file generation and syntax highlighting
 
 " Auto-complete (needs lua support in vim)
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
+call minpac#add('Shougo/neocomplete.vim')
+call minpac#add('Shougo/neosnippet.vim')
+call minpac#add('Shougo/neosnippet-snippets')
 
 " git
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-git')
 
 " Ruby
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rake'
-Plugin 'vim-ruby/vim-ruby'
-"Plugin 'skalnik/vim-vroom' " Test runner
+call minpac#add('vim-ruby/vim-ruby')
+call minpac#add('tpope/vim-bundler')
+call minpac#add('tpope/vim-rails')
+call minpac#add('tpope/vim-rake')
+call minpac#add('skalnik/vim-vroom') " Test runner
 
-Plugin 'fatih/vim-go'
+" call minpac#add('fatih/vim-go')
+" call minpac#add('elmcast/elm-vim')
 
 " Elixir
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
+" call minpac#add('elixir-editors/vim-elixir')
+" call minpac#add('slashmili/alchemist.vim')
 
-Plugin 'lambdatoast/elm.vim'
+" rust
+" call minpac#add('rust-lang/rust.vim')
 
 " Color themes
-Plugin 'morhetz/gruvbox'
-Plugin 'vim-airline/vim-airline'
+call minpac#add('morhetz/gruvbox')
+call minpac#add('vim-airline/vim-airline')
 
-" All of your Plugins must be added before the following line
-call vundle#end() " required
+" fzf
+set rtp+=/usr/local/opt/fzf
+call minpac#add('junegunn/fzf.vim')
+
 filetype plugin indent on " required
 
 if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
 
-" End of Vundle config
+if !has('nvim')
+  set ttymouse=xterm2
+  set mouse=a
+else
+  set mouse=
+endif
 
 " Theme/color schemes config
 
@@ -70,6 +77,9 @@ set background=dark
 let g:gruvbox_contrast_dark='hard'
 set t_Co=256
 colorscheme gruvbox
+
+" Use system clipboard on OSX
+set clipboard=unnamed
 
 if has("gui_running")
   set guioptions-=T  "remove toolbar
@@ -130,6 +140,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+
 ""
 "" File types
 ""
@@ -152,6 +163,8 @@ end
 "" Mappings
 ""
 
+let mapleader=" "
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -169,15 +182,57 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+nnoremap <Leader>wc <C-W><C-C>
+nnoremap <Leader>wo <C-W><C-C>
 
 " Adjust viewports to the same size
-map <Leader>= <C-w>=
+map <Leader>w= <C-w>=
 
 " format the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
 
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>t :TagbarToggle<CR>
+" map <Leader>t :TagbarToggle<CR>
+
+" Reload .vimrc
+nnoremap <Leader>fR :source $MYVIMRC<CR>
+
+" Buffers
+nnoremap <Leader>bn :bnext<CR>
+nnoremap <Leader>bp :bprevious<CR>
+nnoremap <Leader>bd :bdel<CR>
+
+" Tabs
+nnoremap <Leader>tn :tabn<CR>
+nnoremap <Leader>tp :tabp<CR>
+
+" git
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gd :Gdiff<CR>
+nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gb :Gblame<CR>
+nnoremap <silent> <Leader>gl :Glog<CR>
+nnoremap <silent> <Leader>gp :Git push<CR>
+nnoremap <silent> <Leader>gr :Gread<CR>
+nnoremap <silent> <Leader>gw :Gwrite<CR>
+nnoremap <silent> <Leader>ge :Gedit<CR>
+" Mnemonic _i_nteractive
+nnoremap <silent> <Leader>gi :Git add -p %<CR>
+
+" fzf files with Ctrl-P
+nnoremap <C-p> :Files<Cr>
+nnoremap <Leader>bb :Buffers<Cr>
+nnoremap <Leader>ff :Files<Cr>
+nnoremap <Leader>fg :Rg!<Cr>
+
+" tests
+nnoremap <Leader>tt :VroomRunTestFile<Cr>
+nnoremap <Leader>tr :VroomRunTestFile<Cr>
+nnoremap <Leader>tn :VroomRunNearestTest<Cr>
+nnoremap <Leader>tl :VroomRunLastTest<Cr>
+
+" format
+nnoremap <Leader>= :Autoformat<CR>
 
 ""
 "" Plugins config
@@ -185,19 +240,18 @@ map <Leader>t :TagbarToggle<CR>
 
 " vim-go
 "
-au FileType go nmap <Leader>gs <Plug>(go-implements)
-au FileType go nmap <Leader>gi <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc-tab)
-au FileType go nmap <Leader>gg <Plug>(go-def-tab)
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>gb <Plug>(go-build)
-au FileType go nmap <leader>gt <Plug>(go-test)
-au FileType go nmap <leader>gc <Plug>(go-coverage)
-au FileType go nmap <leader>gmv <Plug>(go-rename)
-au FileType go nmap <leader>gimp :GoImports<CR>
-let g:go_fmt_command = "goimports"
-
-au BufWritePost,FileWritePost *.go execute 'GoLint'
+" au FileType go nmap <Leader>gs <Plug>(go-implements)
+" au FileType go nmap <Leader>gi <Plug>(go-info)
+" au FileType go nmap <Leader>gd <Plug>(go-doc-tab)
+" au FileType go nmap <Leader>gg <Plug>(go-def-tab)
+" au FileType go nmap <leader>gr <Plug>(go-run)
+" au FileType go nmap <leader>gb <Plug>(go-build)
+" au FileType go nmap <leader>gt <Plug>(go-test)
+" au FileType go nmap <leader>gc <Plug>(go-coverage)
+" au FileType go nmap <leader>gmv <Plug>(go-rename)
+" au FileType go nmap <leader>gimp :GoImports<CR>
+" let g:go_fmt_command = "goimports"
+" au BufWritePost,FileWritePost *.go execute 'GoLint'
 
 " neocomplete
 "
@@ -248,7 +302,10 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" ctrlp
-"
-let g:ctrlp_working_path_mode = ''
-nnoremap <leader>. :CtrlPTag<cr>
+" elm config
+let g:elm_detailed_complete = 0
+
+" ALE config
+" let g:ale_completion_enabled = 1
+
+let g:rustfmt_autosave = 1

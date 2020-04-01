@@ -20,3 +20,9 @@ alias find_broken_links='find -L . -type l -ls'
 
 # commands starting with % for pasting from web
 alias %=' '
+
+rt () {
+  ruby -Itest -r pathname -e 'ARGV.each { |f| file = Pathname.new(f.split(":").first).realpath; puts file; require file }' $@
+}
+
+alias rus='rubocop -c .ruby-style.yml'

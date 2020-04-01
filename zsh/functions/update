@@ -1,5 +1,5 @@
 ruby_tasks () {
-  gem install bundler pry pry-doc method_source
+  gem install bundler pry pry-doc method_source rubocop ruby_parser ruby-debug-ide solargraph
   gem update --system
   rbenv rehash
 }
@@ -13,11 +13,13 @@ git_tasks () {
 }
 
 node_tasks () {
-  yarn global install tern eslint serve bower polymer-cli
+  yarn global add eslint serve elm elm-format elm-analyse elm-oracle elm-live # create-elm-app uglify-js tern ionic cordova cordova-res
 }
 
-ruby_tasks &
-#golang_tasks &
-git_tasks &
-node_tasks &
-wait
+ruby_tasks
+# golang_tasks
+git_tasks
+node_tasks
+# gcloud components update
+rustup update
+asdf update

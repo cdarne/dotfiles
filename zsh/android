@@ -1,1 +1,2 @@
 export ANDROID_SDK_ROOT=/Users/cedric.darne/Library/Android/sdk
+export PATH=$ANDROID_SDK_ROOT/platform-tools:$PATH

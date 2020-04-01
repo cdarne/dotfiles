@@ -6,6 +6,13 @@
 
 ;;; Code:
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,19 +101,19 @@
 ;; Go config
 (exec-path-from-shell-copy-envs '("GOROOT" "GOPATH"))
 ; Go oracle
-(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
-(defun my-go-mode-hook ()
-  "My settings for 'go-mode'."
-  (interactive)
-  (setq gofmt-command "goimports")
-  ; Call Gofmt before saving
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump)
-  (set (make-local-variable 'company-backends) (append '(company-go) company-backends)))
-(add-hook 'go-mode-hook 'my-go-mode-hook)
+;; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+;; (defun my-go-mode-hook ()
+;;   "My settings for 'go-mode'."
+;;   (interactive)
+;;   (setq gofmt-command "goimports")
+;;   ; Call Gofmt before saving
+;;   (add-hook 'before-save-hook 'gofmt-before-save)
+;;   ; Godef jump key binding
+;;   (local-set-key (kbd "M-.") 'godef-jump)
+;;   (set (make-local-variable 'company-backends) (append '(company-go) company-backends)))
+;; (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook '≈after-init-hook #'global-flycheck-mode)
 
 
 ;; Tab/indentation config

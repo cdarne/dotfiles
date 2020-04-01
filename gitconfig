@@ -12,6 +12,8 @@
 [credential]
 	helper = cache --timeout 3600
 [alias]
+  fr = !git fetch && git rebase --autostash FETCH_HEAD
 	pr = merge --no-commit --no-ff
+	amend = commit --amend --no-edit
 [push]
 	default = simple

@@ -1,0 +1,1 @@
+export PATH="$HOME/Code/crypto/go-ethereum/build/bin:$PATH"
