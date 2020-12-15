@@ -62,7 +62,7 @@ source $ZSH/oh-my-zsh.sh
 . ~/.zsh/android
 . ~/.zsh/elixir
 . ~/.zsh/node
-#. ~/.zsh/google-cloud
+. ~/.zsh/google-cloud
 . ~/.zsh/fzf
 
 [[ -f ~/.zsh_specific ]] && source ~/.zsh_specific

@@ -13,13 +13,13 @@ git_tasks () {
 }
 
 node_tasks () {
-  yarn global add eslint serve elm elm-format elm-analyse elm-oracle elm-live # create-elm-app uglify-js tern ionic cordova cordova-res
+  npm install -g eslint serve elm-analyse elm-oracle elm-live uglify-js # create-elm-app tern ionic cordova cordova-res
 }
 
 ruby_tasks
 # golang_tasks
 git_tasks
 node_tasks
-# gcloud components update
+gcloud components update
 rustup update
 asdf update

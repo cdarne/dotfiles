@@ -15,16 +15,12 @@ call minpac#add('tpope/vim-sensible') " Defaults for vim
 call minpac#add('scrooloose/nerdtree') " Tree files view
 call minpac#add('vim-syntastic/syntastic') " Syntax checker
 call minpac#add('Chiel92/vim-autoformat') " Syntax checker
+call minpac#add('autozimu/LanguageClient-neovim') " LSP
 
 " Tags
 "call minpac#add('majutsushi/tagbar') "class outline viewer
 "call minpac#add('xolox/vim-misc') " Dependency for vim-easytags
 "call minpac#add('xolox/vim-easytags') "Automated tag file generation and syntax highlighting
-
-" Auto-complete (needs lua support in vim)
-call minpac#add('Shougo/neocomplete.vim')
-call minpac#add('Shougo/neosnippet.vim')
-call minpac#add('Shougo/neosnippet-snippets')
 
 " git
 call minpac#add('tpope/vim-fugitive')
@@ -41,11 +37,13 @@ call minpac#add('skalnik/vim-vroom') " Test runner
 " call minpac#add('elmcast/elm-vim')
 
 " Elixir
-" call minpac#add('elixir-editors/vim-elixir')
-" call minpac#add('slashmili/alchemist.vim')
+call minpac#add('elixir-editors/vim-elixir')
+call minpac#add('slashmili/alchemist.vim')
 
 " rust
 " call minpac#add('rust-lang/rust.vim')
+
+cal minpac#add('ziglang/zig.vim')
 
 " Color themes
 call minpac#add('morhetz/gruvbox')
@@ -184,6 +182,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <Leader>wc <C-W><C-C>
 nnoremap <Leader>wo <C-W><C-C>
+nnoremap <leader>wj <C-W><C-J>
+nnoremap <leader>wk <C-W><C-K>
+nnoremap <leader>wl <C-W><C-L>
+nnoremap <leader>wh <C-W><C-H>
 
 " Adjust viewports to the same size
 map <Leader>w= <C-w>=
@@ -253,55 +255,6 @@ nnoremap <Leader>= :Autoformat<CR>
 " let g:go_fmt_command = "goimports"
 " au BufWritePost,FileWritePost *.go execute 'GoLint'
 
-" neocomplete
-"
-" Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  "return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-" neosnippet
-"
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 " elm config
 let g:elm_detailed_complete = 0
 
@@ -309,3 +262,22 @@ let g:elm_detailed_complete = 0
 " let g:ale_completion_enabled = 1
 
 let g:rustfmt_autosave = 1
+
+"" LSP Client Config
+
+" Don't send a stop signal to the server when exiting vim.
+" This is optional, but I don't like having to restart Solargraph
+" every time I restart vim.
+let g:LanguageClient_autoStop = 0
+" Tell the language client to use the default IP and port
+" that Solargraph runs on
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['tcp://localhost:7658']
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" Configure ruby omni-completion to use the language client:
+autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
