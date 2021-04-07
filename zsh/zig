@@ -1,0 +1,2 @@
+export PATH="$HOME/zig/build/bin:$PATH"
+# cmake .. -DCMAKE_PREFIX_PATH=$(brew --prefix llvm) -DCMAKE_BUILD_TYPE=Release

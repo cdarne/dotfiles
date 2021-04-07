@@ -59,11 +59,12 @@ source $ZSH/oh-my-zsh.sh
 
 . ~/.zsh/golang
 . ~/.zsh/ruby
-. ~/.zsh/android
 . ~/.zsh/elixir
 . ~/.zsh/node
-. ~/.zsh/google-cloud
 . ~/.zsh/fzf
+# . ~/.zsh/google-cloud
+# . ~/.zsh/android
+# . ~/.zsh/zig
 
 [[ -f ~/.zsh_specific ]] && source ~/.zsh_specific
 

@@ -13,7 +13,7 @@ git_tasks () {
 }
 
 node_tasks () {
-  npm install -g eslint serve elm-analyse elm-oracle elm-live uglify-js # create-elm-app tern ionic cordova cordova-res
+  npm install -g eslint live-server elm-test elm-analyse elm-oracle elm-live uglify-js # create-elm-app tern ionic cordova cordova-res
 }
 
 ruby_tasks

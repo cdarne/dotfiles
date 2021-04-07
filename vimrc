@@ -17,6 +17,14 @@ call minpac#add('vim-syntastic/syntastic') " Syntax checker
 call minpac#add('Chiel92/vim-autoformat') " Syntax checker
 call minpac#add('autozimu/LanguageClient-neovim') " LSP
 
+" Autocomplete
+call minpac#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call minpac#add('roxma/nvim-yarp')
+  call minpac#add('roxma/vim-hug-neovim-rpc')
+endif
+let g:deoplete#enable_at_startup = 1
+
 " Tags
 "call minpac#add('majutsushi/tagbar') "class outline viewer
 "call minpac#add('xolox/vim-misc') " Dependency for vim-easytags
@@ -33,17 +41,17 @@ call minpac#add('tpope/vim-rails')
 call minpac#add('tpope/vim-rake')
 call minpac#add('skalnik/vim-vroom') " Test runner
 
-" call minpac#add('fatih/vim-go')
+call minpac#add('fatih/vim-go')
 " call minpac#add('elmcast/elm-vim')
 
 " Elixir
-call minpac#add('elixir-editors/vim-elixir')
-call minpac#add('slashmili/alchemist.vim')
+" call minpac#add('elixir-editors/vim-elixir')
+" call minpac#add('slashmili/alchemist.vim')
 
 " rust
 " call minpac#add('rust-lang/rust.vim')
 
-cal minpac#add('ziglang/zig.vim')
+" cal minpac#add('ziglang/zig.vim')
 
 " Color themes
 call minpac#add('morhetz/gruvbox')
@@ -170,10 +178,9 @@ map <Down> gj
 map <Up> gk
 
 " Quickfix easy navigation
-nnoremap <A-j> :cn<CR>
-nnoremap <A-k> :cp<CR>
-nnoremap <A-J> :cla<CR>
-nnoremap <A-K> :cr<CR>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 " Easier window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -205,8 +212,8 @@ nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bd :bdel<CR>
 
 " Tabs
-nnoremap <Leader>tn :tabn<CR>
-nnoremap <Leader>tp :tabp<CR>
+" nnoremap <Leader>tn :tabn<CR>
+" nnoremap <Leader>tp :tabp<CR>
 
 " git
 nnoremap <silent> <Leader>gs :Gstatus<CR>
@@ -228,10 +235,10 @@ nnoremap <Leader>ff :Files<Cr>
 nnoremap <Leader>fg :Rg!<Cr>
 
 " tests
-nnoremap <Leader>tt :VroomRunTestFile<Cr>
-nnoremap <Leader>tr :VroomRunTestFile<Cr>
-nnoremap <Leader>tn :VroomRunNearestTest<Cr>
-nnoremap <Leader>tl :VroomRunLastTest<Cr>
+" nnoremap <Leader>tt :VroomRunTestFile<Cr>
+" nnoremap <Leader>tr :VroomRunTestFile<Cr>
+" nnoremap <Leader>tn :VroomRunNearestTest<Cr>
+" nnoremap <Leader>tl :VroomRunLastTest<Cr>
 
 " format
 nnoremap <Leader>= :Autoformat<CR>
@@ -242,17 +249,21 @@ nnoremap <Leader>= :Autoformat<CR>
 
 " vim-go
 "
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+let g:go_fmt_command = "goimports"
+
 " au FileType go nmap <Leader>gs <Plug>(go-implements)
 " au FileType go nmap <Leader>gi <Plug>(go-info)
 " au FileType go nmap <Leader>gd <Plug>(go-doc-tab)
 " au FileType go nmap <Leader>gg <Plug>(go-def-tab)
 " au FileType go nmap <leader>gr <Plug>(go-run)
-" au FileType go nmap <leader>gb <Plug>(go-build)
 " au FileType go nmap <leader>gt <Plug>(go-test)
 " au FileType go nmap <leader>gc <Plug>(go-coverage)
 " au FileType go nmap <leader>gmv <Plug>(go-rename)
 " au FileType go nmap <leader>gimp :GoImports<CR>
-" let g:go_fmt_command = "goimports"
 " au BufWritePost,FileWritePost *.go execute 'GoLint'
 
 " elm config
