@@ -1,21 +1,23 @@
-ctags
-rg
-fd
-fzf
-git
-go
-htop
-imagemagick
-mosh
-mycli
-node
-rbenv
-rbenv-ctags
-ruby
-ruby-build
-ruby-install
-tmate
-vim
-youtube-dl
-zsh
-xz
+brew "go"
+brew "fzf"
+brew "fd"
+brew "git"
+brew "elm"
+brew "elm-format"
+brew "rg"
+brew "htop"
+brew "rbenv"
+brew "rbenv-ctags"
+brew "ruby-build"
+brew "ruby-install"
+brew "jq"
+brew "neovim"
+brew "vim"
+brew "protobuf"
+brew "pwgen"
+brew "tmux"
+brew "zsh"
+brew "xz"
+
+cask "calibre"
+cask "keepassxc"

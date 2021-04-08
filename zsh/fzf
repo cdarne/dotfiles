@@ -1,5 +1,5 @@
-. /usr/local/opt/fzf/shell/completion.zsh
-. /usr/local/opt/fzf/shell/key-bindings.zsh
+. "$(brew --prefix)/opt/fzf/shell/completion.zsh"
+. "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
 
 FD_OPTIONS="--hidden --follow --no-ignore --exclude .git --exclude node_modules"
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS"

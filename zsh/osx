@@ -1,4 +1,4 @@
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
-source ~/.iterm2_shell_integration.`basename $SHELL`
 export PATH="/usr/local/sbin:$PATH"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

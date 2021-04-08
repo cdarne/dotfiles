@@ -15,15 +15,19 @@ call minpac#add('tpope/vim-sensible') " Defaults for vim
 call minpac#add('scrooloose/nerdtree') " Tree files view
 call minpac#add('vim-syntastic/syntastic') " Syntax checker
 call minpac#add('Chiel92/vim-autoformat') " Syntax checker
-call minpac#add('autozimu/LanguageClient-neovim') " LSP
+
+
+"" Neovim specific
+"call minpac#add('autozimu/LanguageClient-neovim') " LSP
 
 " Autocomplete
-call minpac#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call minpac#add('roxma/nvim-yarp')
-  call minpac#add('roxma/vim-hug-neovim-rpc')
-endif
-let g:deoplete#enable_at_startup = 1
+" call minpac#add('Shougo/deoplete.nvim')
+" if !has('nvim')
+"   call minpac#add('roxma/nvim-yarp')
+"   call minpac#add('roxma/vim-hug-neovim-rpc')
+" endif
+" let g:deoplete#enable_at_startup = 1
+"" End of neovim
 
 " Tags
 "call minpac#add('majutsushi/tagbar') "class outline viewer

@@ -18,8 +18,8 @@ node_tasks () {
 
 ruby_tasks
 # golang_tasks
-git_tasks
+# git_tasks
 node_tasks
-gcloud components update
+# gcloud components update
 rustup update
-asdf update
+# asdf update
